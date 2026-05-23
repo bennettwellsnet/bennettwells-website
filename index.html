@@ -4,104 +4,238 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bennett Wells | Senior IT Leader</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="navbar">
-  <span class="nav-logo">Bennett Wells</span>
-  <div class="nav-links">
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">BW</a>
+  <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
     <a href="#expertise">Expertise</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Senior IT Leader</p>
-    <h1 class="hero-title">Bennett Wells</h1>
+    <h1 class="hero-title">Bennett<br>Wells</h1>
     <p class="hero-sub">25+ years designing, securing, and modernizing enterprise infrastructure across financial services, healthcare, and government sectors.</p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn">Get in Touch</a>
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#expertise" class="btn-ghost">View Expertise</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">25+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Industries</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Projects Delivered</span>
+      </div>
     </div>
   </div>
-  <div class="hero-divider"></div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
 </header>
 
-<section id="about" class="section">
+<section id="about" class="section reveal">
   <div class="section-inner">
     <p class="label">About</p>
     <h2>Who I Am</h2>
-    <p class="section-text">
-      Senior IT leader with 25+ years of experience designing, securing, and modernizing enterprise infrastructure across financial services, healthcare, and government sectors. Proven track record leading cloud migrations, hybrid network architectures, and cybersecurity programs that measurably improve security posture, resilience, and operational performance. Skilled at building high-performing engineering and operations teams, managing strategic vendor relationships, and partnering with executive stakeholders to align technology investments with business outcomes.
-    </p>
-  </div>
-</section>
-
-<section id="expertise" class="section alt">
-  <div class="section-inner">
-    <p class="label">Expertise</p>
-    <h2>What I Work With</h2>
-    <div class="skills">
-      <span>Infrastructure Operations</span>
-      <span>Cloud & Infrastructure Modernization</span>
-      <span>Cybersecurity & Risk Management</span>
-      <span>SOC 2 Compliance</span>
-      <span>Network Engineering & Architecture</span>
-      <span>Microsoft Azure & Microsoft 365</span>
-      <span>VMware & Virtualization</span>
-      <span>Vendor & Contract Management</span>
-      <span>End User Computing</span>
-      <span>Disaster Recovery & Business Continuity</span>
-      <span>HIPAA & Regulatory Compliance</span>
-      <span>Team Leadership & Development</span>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>
+          Senior IT leader with 25+ years of experience designing, securing, and modernizing enterprise infrastructure across financial services, healthcare, and government sectors.
+        </p>
+        <p>
+          Proven track record leading cloud migrations, hybrid network architectures, and cybersecurity programs that measurably improve security posture, resilience, and operational performance.
+        </p>
+        <p>
+          Skilled at building high-performing engineering and operations teams, managing strategic vendor relationships, and partnering with executive stakeholders to align technology investments with business outcomes.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="highlight-icon">&#9729;</div>
+          <h4>Cloud &amp; Infrastructure</h4>
+          <p>Azure, hybrid networks, and large-scale cloud migrations</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">&#9673;</div>
+          <h4>Security &amp; Compliance</h4>
+          <p>SOC 2, HIPAA, and enterprise cybersecurity programs</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">&#9670;</div>
+          <h4>Team Leadership</h4>
+          <p>Building and scaling high-performing engineering teams</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="projects" class="section">
+<section id="expertise" class="section alt reveal">
+  <div class="section-inner">
+    <p class="label">Expertise</p>
+    <h2>What I Work With</h2>
+    <div class="expertise-grid">
+      <div class="expertise-group">
+        <h4 class="expertise-group-title">Infrastructure</h4>
+        <ul>
+          <li>Infrastructure Operations</li>
+          <li>Cloud &amp; Infrastructure Modernization</li>
+          <li>Network Engineering &amp; Architecture</li>
+          <li>VMware &amp; Virtualization</li>
+          <li>Disaster Recovery &amp; Business Continuity</li>
+        </ul>
+      </div>
+      <div class="expertise-group">
+        <h4 class="expertise-group-title">Security &amp; Compliance</h4>
+        <ul>
+          <li>Cybersecurity &amp; Risk Management</li>
+          <li>SOC 2 Compliance</li>
+          <li>HIPAA &amp; Regulatory Compliance</li>
+          <li>End User Computing</li>
+        </ul>
+      </div>
+      <div class="expertise-group">
+        <h4 class="expertise-group-title">Platforms &amp; Leadership</h4>
+        <ul>
+          <li>Microsoft Azure &amp; Microsoft 365</li>
+          <li>Vendor &amp; Contract Management</li>
+          <li>Team Leadership &amp; Development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section reveal">
   <div class="section-inner">
     <p class="label">Work</p>
     <h2>Projects</h2>
     <div class="projects">
       <div class="card">
-        <div class="card-tag">Web</div>
+        <div class="card-header">
+          <span class="card-tag">Web</span>
+          <span class="card-arrow">&#8599;</span>
+        </div>
         <h3>My Website</h3>
         <p>Personal portfolio built with HTML, CSS, and deployed on Cloudflare Pages.</p>
+        <div class="card-footer">
+          <span class="card-tech">HTML</span>
+          <span class="card-tech">CSS</span>
+          <span class="card-tech">Cloudflare</span>
+        </div>
       </div>
       <div class="card">
-        <div class="card-tag">Automation</div>
+        <div class="card-header">
+          <span class="card-tag">Automation</span>
+          <span class="card-arrow">&#8599;</span>
+        </div>
         <h3>AI-Assisted IT Workflows</h3>
-        <p>Leveraging Claude and GitHub Copilot to automate IT workflows, streamline operations, and accelerate productivity across infrastructure and systems management.</p>
+        <p>Leveraging Claude and GitHub Copilot to automate IT workflows, streamline operations, and accelerate productivity.</p>
+        <div class="card-footer">
+          <span class="card-tech">Claude AI</span>
+          <span class="card-tech">GitHub Copilot</span>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-tag">Coming Soon</div>
+      <div class="card card-muted">
+        <div class="card-header">
+          <span class="card-tag">Coming Soon</span>
+        </div>
         <h3>Future Project</h3>
         <p>Another project on the horizon. Stay tuned.</p>
+        <div class="card-footer">
+          <span class="card-tech">TBD</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact" class="section alt">
-  <div class="section-inner">
-    <p class="label">Contact</p>
-    <h2>Let's Connect</h2>
-    <p class="section-text">Have a project in mind or just want to say hi? Reach out.</p>
-    <div class="contact-links">
-      <a href="mailto:bwells@bennettwells.net" class="contact-btn">Email</a>
-      <a href="https://www.linkedin.com/in/bennett-wells8044265467/" target="_blank" class="contact-btn">LinkedIn</a>
-      <a href="https://github.com/bennettwellsnet" target="_blank" class="contact-btn">GitHub</a>
+<section id="contact" class="section alt reveal">
+  <div class="section-inner contact-inner">
+    <div class="contact-left">
+      <p class="label">Contact</p>
+      <h2>Let's Connect</h2>
+      <p class="section-text">Have a project in mind, exploring a new opportunity, or just want to say hi? Reach out.</p>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:bwells@bennettwells.net" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">bwells@bennettwells.net</span>
+        <span class="contact-link-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.linkedin.com/in/bennett-wells8044265467/" target="_blank" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-value">bennett-wells</span>
+        <span class="contact-link-arrow">&#8599;</span>
+      </a>
+      <a href="https://github.com/bennettwellsnet" target="_blank" class="contact-link">
+        <span class="contact-link-label">GitHub</span>
+        <span class="contact-link-value">bennettwellsnet</span>
+        <span class="contact-link-arrow">&#8599;</span>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Bennett Wells</p>
+  <div class="footer-inner">
+    <span class="footer-logo">Bennett Wells</span>
+    <span>&#169; 2026</span>
+  </div>
 </footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('active');
+    });
+  });
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('revealed');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
