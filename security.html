@@ -1,370 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cybersecurity | Bennett Wells</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity & Risk | Bennett Wells</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --accent: #c0392b;
-      --accent-light: #e74c3c;
-      --accent-muted: rgba(192, 57, 43, 0.1);
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --accent: #d4a96a;
+      --accent2: #e05252;
     }
-
-    /* PAGE HERO */
-    .page-hero {
-      padding: 80px 60px 60px;
-      background: linear-gradient(160deg, #1a0a09 0%, #3b1010 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .page-hero-divider {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #c0392b, #e74c3c, #c0392b);
-    }
-    .page-hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-    }
-    .page-hero-eyebrow {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 16px;
-    }
-    .page-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-    .page-hero p {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.65);
-      max-width: 560px;
-      line-height: 1.8;
-    }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      margin-bottom: 20px;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: rgba(255,255,255,0.85); }
-    .back-link svg { width: 16px; height: 16px; }
-
-    /* STAT BAR */
-    .stat-bar {
-      display: flex;
-      gap: 0;
-      margin-top: 48px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .stat-item {
-      flex: 1;
-      padding: 32px 24px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      background: #fff;
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* CAPABILITY CARDS */
-    .cap-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .cap-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      padding: 28px 24px;
-      border-radius: 2px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .cap-card:hover {
-      box-shadow: 0 8px 28px rgba(192,57,43,0.1);
-      transform: translateY(-2px);
-    }
-    .cap-icon { font-size: 1.5rem; margin-bottom: 14px; }
-    .cap-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .cap-card p {
-      font-size: 0.875rem;
-      color: var(--muted);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
       line-height: 1.7;
     }
 
-    /* FRAMEWORKS */
-    .frameworks-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 36px;
-    }
-    .frameworks-list span {
-      padding: 8px 18px;
-      border-radius: 3px;
-      font-size: 0.825rem;
-      font-weight: 500;
-      border: 1px solid #f5c6c3;
-      color: var(--accent);
-      background: var(--accent-muted);
-      transition: background 0.2s, color 0.2s;
-    }
-    .frameworks-list span:hover {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-
-    /* PHILOSOPHY TABLE */
-    .phil-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
-    .phil-table th {
-      text-align: left;
-      padding: 12px 16px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border-bottom: 2px solid var(--border);
-    }
-    .phil-table td {
-      padding: 16px;
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      color: var(--text);
-      vertical-align: top;
     }
-    .phil-table td:first-child {
-      font-weight: 600;
-      color: var(--navy);
-      width: 30%;
-    }
-    .phil-table tr:last-child td { border-bottom: none; }
-    .phil-table tr:hover td { background: var(--accent-muted); }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-    @media (max-width: 700px) {
-      .page-hero { padding: 60px 24px 50px; }
-      .stat-bar { flex-direction: column; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat-item:last-child { border-bottom: none; }
-      .phil-table td:first-child { width: auto; }
+    /* HERO */
+    .hero {
+      position: relative;
+      padding: 7rem 2.5rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(224,82,82,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent2); margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent2); border-radius: 2px; }
+    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1.12; margin-bottom: 1.5rem; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-lead { font-size: 1.1rem; color: var(--muted); max-width: 580px; line-height: 1.75; }
+
+    /* STAT BAR */
+    .stat-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto 0;
+    }
+    .stat {
+      background: var(--surface);
+      padding: 1.75rem 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
+
+    /* SECTION */
+    .section { max-width: 900px; margin: 0 auto; padding: 3.5rem 2.5rem; }
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+    .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
+    .section > p { color: var(--muted); max-width: 620px; margin-bottom: 2.5rem; }
+    hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+    /* CAPABILITY GRID */
+    .cap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+    .cap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .cap-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent2), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .cap-card:hover { border-color: rgba(224,82,82,0.25); transform: translateY(-2px); }
+    .cap-card:hover::after { opacity: 1; }
+    .cap-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+    .cap-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .cap-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    /* FRAMEWORKS */
+    .framework-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .fw-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .fw-tag:hover { border-color: rgba(224,82,82,0.3); }
+    .fw-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; }
+
+    /* APPROACH TABLE */
+    .approach { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .approach-row { display: grid; grid-template-columns: 180px 1fr; background: var(--surface); }
+    .approach-row:hover { background: var(--surface2); }
+    .approach-label { padding: 1.1rem 1.5rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent2); border-right: 1px solid var(--border); display: flex; align-items: center; }
+    .approach-val { padding: 1.1rem 1.5rem; font-size: 0.9rem; color: var(--muted); display: flex; align-items: center; }
+
+    /* CTA */
+    .cta-section { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem 6rem; text-align: center; }
+    .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.75rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #0a0a0f; }
+    .btn-primary:hover { background: #e0b87a; transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); margin-left: 0.75rem; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.1rem; }
+      .hero, .section, .cta-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 4rem; }
+      .stat-bar { grid-template-columns: 1fr; }
+      .approach-row { grid-template-columns: 1fr; }
+      .approach-label { border-right: none; border-bottom: 1px solid var(--border); }
     }
   </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="index.html" class="nav-logo" style="text-decoration:none;">Bennett Wells</a>
-  <div class="nav-links">
-    <a href="index.html#about">About</a>
-    <a href="index.html#expertise">Expertise</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="index.html#contact">Contact</a>
-  </div>
-</nav>
+  <nav>
+    <a class="nav-logo" href="/">Bennett Wells</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#expertise">Expertise</a></li>
+      <li><a href="/security" class="active">Security</a></li>
+      <li><a href="/cloud">Cloud</a></li>
+      <li><a href="/compliance">Compliance</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<header class="page-hero">
-  <div class="page-hero-content">
-    <a href="index.html" class="back-link">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-      Back to Home
-    </a>
-    <p class="page-hero-eyebrow">Cybersecurity & Risk</p>
-    <h1>Security Leadership</h1>
-    <p>Building enterprise security programs that reduce risk, satisfy compliance requirements, and keep organizations resilient against evolving threats.</p>
-  </div>
-  <div class="page-hero-divider"></div>
-</header>
+  <header class="hero">
+    <div class="hero-eyebrow">Cybersecurity Implementation</div>
+    <h1>Security<br><em>Implementation</em></h1>
+    <p class="hero-lead">
+      Hands-on experience implementing cybersecurity controls and processes within enterprise
+      environments -- translating security requirements into day-to-day IT practice across
+      financial services, healthcare, and regulated industries.
+    </p>
+  </header>
 
-<!-- STAT BAR -->
-<section class="section" style="padding-top: 60px; padding-bottom: 0;">
-  <div class="section-inner">
-    <div class="stat-bar">
-      <div class="stat-item">
-        <span class="stat-num">25+</span>
-        <span class="stat-label">Years in IT Security</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">3</span>
-        <span class="stat-label">Regulated Sectors</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">0</span>
-        <span class="stat-label">Material Breaches</span>
-      </div>
+  <div class="stat-bar">
+    <div class="stat">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years in Enterprise IT</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Regulated Sectors</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Compliance Frameworks Worked Within</div>
     </div>
   </div>
-</section>
 
-<!-- CAPABILITIES -->
-<section class="section">
-  <div class="section-inner">
-    <p class="label" style="color: var(--accent);">Capabilities</p>
-    <h2>What I Deliver</h2>
-    <p class="section-text">From program design to hands-on implementation, I cover the full security lifecycle.</p>
+  <hr class="divider" style="margin-top: 0;" />
+
+  <section class="section" id="capabilities">
+    <div class="section-label">Implementation Experience</div>
+    <h2>Where I Work on Security</h2>
+    <p>Practical, hands-on implementation work across several security areas -- executing on security requirements as part of broader IT operations and infrastructure roles.</p>
     <div class="cap-grid">
       <div class="cap-card">
-        <div class="cap-icon">&#128274;</div>
-        <h3>Security Program Design</h3>
-        <p>Building security programs from the ground up — policies, controls, governance structures, and risk frameworks aligned to business objectives.</p>
+        <div class="cap-icon">🔐</div>
+        <h3>Identity & Access</h3>
+        <p>Implementing Conditional Access policies, MFA rollouts, and Entra ID configurations -- hands-on work configuring and maintaining access controls across the environment.</p>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">&#128269;</div>
-        <h3>Risk Assessment & Management</h3>
-        <p>Conducting structured risk assessments, threat modeling, and gap analyses to prioritize controls where they matter most.</p>
+        <div class="cap-icon">📋</div>
+        <h3>Security Documentation</h3>
+        <p>Writing and maintaining security policies, standards, runbooks, and procedures that support compliance requirements and day-to-day operations.</p>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">&#128187;</div>
-        <h3>Endpoint & Network Security</h3>
-        <p>Designing and enforcing endpoint protection, network segmentation, firewall policies, and zero-trust architectures across hybrid environments.</p>
+        <div class="cap-icon">🏗️</div>
+        <h3>Security Architecture</h3>
+        <p>Contributing to the implementation of Zero Trust principles, network segmentation, and secure hybrid cloud configurations as part of broader infrastructure work.</p>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">&#9888;</div>
-        <h3>Incident Response</h3>
-        <p>Developing IR playbooks, leading tabletop exercises, and managing security incidents from detection through post-incident review.</p>
+        <div class="cap-icon">⚠️</div>
+        <h3>IT Risk Committee</h3>
+        <p>Active participant on the IT Risk Committee -- contributing to risk identification, documentation, and tracking of remediation efforts across the organization.</p>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">&#128100;</div>
-        <h3>Identity & Access Management</h3>
-        <p>Implementing IAM strategies including MFA, privileged access management, Active Directory governance, and role-based access controls.</p>
+        <div class="cap-icon">🔍</div>
+        <h3>Security Tooling</h3>
+        <p>Implementing and supporting EDR platforms, endpoint security configurations, and security tooling -- focused on deployment and ongoing operations.</p>
       </div>
       <div class="cap-card">
-        <div class="cap-icon">&#128202;</div>
-        <h3>Security Awareness Training</h3>
-        <p>Building and running security awareness programs that reduce phishing susceptibility and build a security-first culture across the organization.</p>
+        <div class="cap-icon">🛡️</div>
+        <h3>Policy & Governance</h3>
+        <p>Supporting security governance processes including policy reviews, access reviews, and control documentation tied to audit and compliance cycles.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FRAMEWORKS -->
-<section class="section alt">
-  <div class="section-inner">
-    <p class="label" style="color: var(--accent);">Frameworks</p>
-    <h2>Standards I Work With</h2>
-    <p class="section-text">Security programs I design are grounded in established frameworks adapted to each organization's risk profile.</p>
-    <div class="frameworks-list">
-      <span>NIST CSF</span>
-      <span>NIST SP 800-53</span>
-      <span>CIS Controls v8</span>
-      <span>ISO 27001</span>
-      <span>SOC 2 Type II</span>
-      <span>HIPAA Security Rule</span>
-      <span>CMMC</span>
-      <span>Zero Trust Architecture</span>
-      <span>MITRE ATT&amp;CK</span>
-      <span>PCI DSS</span>
+  <hr class="divider" />
+
+  <section class="section" id="frameworks">
+    <div class="section-label">Frameworks & Standards</div>
+    <h2>Frameworks I've Implemented Within</h2>
+    <p>Practical experience implementing controls and processes within environments governed by these frameworks -- not a certified specialist, but a practitioner who has worked within each.</p>
+    <div class="framework-list">
+      <div class="fw-tag"><span class="dot"></span>NIST CSF</div>
+      <div class="fw-tag"><span class="dot"></span>SOC 2 Type II</div>
+      <div class="fw-tag"><span class="dot"></span>HIPAA Security Rule</div>
+      <div class="fw-tag"><span class="dot"></span>CIS Controls</div>
+      <div class="fw-tag"><span class="dot"></span>Zero Trust Principles</div>
+      <div class="fw-tag"><span class="dot"></span>FINRA</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PHILOSOPHY TABLE -->
-<section class="section">
-  <div class="section-inner">
-    <p class="label" style="color: var(--accent);">Philosophy</p>
-    <h2>My Security Principles</h2>
-    <p class="section-text">Security is a business enabler, not a blocker. These are the principles that guide how I approach it.</p>
-    <table class="phil-table">
-      <thead>
-        <tr>
-          <th>Principle</th>
-          <th>What It Means in Practice</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Risk-Based Prioritization</td>
-          <td>Not all risks are equal. I focus controls on what actually threatens the business, not on checking boxes for their own sake.</td>
-        </tr>
-        <tr>
-          <td>Defense in Depth</td>
-          <td>No single control is sufficient. Layered defenses ensure that when one layer fails, others hold.</td>
-        </tr>
-        <tr>
-          <td>Least Privilege</td>
-          <td>Users and systems get exactly the access they need — no more. Every unnecessary permission is an unnecessary risk.</td>
-        </tr>
-        <tr>
-          <td>Security by Design</td>
-          <td>Security is built into projects from day one, not bolted on at the end. It's easier, cheaper, and more effective that way.</td>
-        </tr>
-        <tr>
-          <td>Continuous Improvement</td>
-          <td>The threat landscape changes constantly. Security programs must evolve — through metrics, audits, and lessons learned.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+  <hr class="divider" />
 
-<section id="contact" class="section alt">
-  <div class="section-inner">
-    <p class="label">Contact</p>
-    <h2>Let's Connect</h2>
-    <p class="section-text">Interested in discussing your security program or risk posture? Reach out.</p>
-    <div class="contact-links">
-      <a href="mailto:bwells@bennettwells.net" class="contact-btn">Email</a>
-      <a href="https://www.linkedin.com/in/bennett-wells8044265467/" target="_blank" class="contact-btn">LinkedIn</a>
-      <a href="https://github.com/bennettwellsnet" target="_blank" class="contact-btn">GitHub</a>
+  <section class="section" id="approach">
+    <div class="section-label">Perspective</div>
+    <h2>How I Think About Security</h2>
+    <p>Principles that guide how I approach security implementation work as part of day-to-day IT operations.</p>
+    <div class="approach">
+      <div class="approach-row">
+        <div class="approach-label">Risk-Aware</div>
+        <div class="approach-val">Security decisions should be tied to real risk, not just compliance requirements -- I bring that lens to IT conversations at all levels.</div>
+      </div>
+      <div class="approach-row">
+        <div class="approach-label">Least Privilege</div>
+        <div class="approach-val">Identity and access are managed conservatively -- access granted minimally, reviewed regularly, and removed promptly when no longer needed.</div>
+      </div>
+      <div class="approach-row">
+        <div class="approach-label">Documentation First</div>
+        <div class="approach-val">Good security practices only stick when they're written down, communicated clearly, and easy for teams to follow.</div>
+      </div>
+      <div class="approach-row">
+        <div class="approach-label">Collaborative</div>
+        <div class="approach-val">Security works best when IT, compliance, and business teams are aligned -- I focus on being a bridge, not a bottleneck.</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>© 2026 Bennett Wells</p>
-</footer>
+  <hr class="divider" />
+
+  <div class="cta-section">
+    <h2>Working in a Security-Conscious Environment?</h2>
+    <p>Happy to connect with teams where security awareness and practical IT experience matter.</p>
+    <a href="mailto:bwells@bennettwells.net" class="btn btn-primary">Get in Touch</a>
+    <a href="/" class="btn btn-ghost">Back to Home</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Bennett Wells &mdash; <a href="/">bennettwells.net</a></p>
+  </footer>
 
 </body>
 </html>
