@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance | Bennett Wells</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --accent: #1b6b3a;
+      --accent-light: #27ae60;
+      --accent-muted: rgba(27, 107, 58, 0.08);
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 80px 60px 60px;
+      background: linear-gradient(160deg, #071a0e 0%, #0f3d1e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero-divider {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1b6b3a, #2ecc71, #1b6b3a);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+    .page-hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: rgba(255,255,255,0.85); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* REGULATION CARDS */
+    .reg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .reg-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--accent);
+      padding: 32px 28px;
+      border-radius: 2px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .reg-card:hover {
+      box-shadow: 0 8px 28px rgba(27,107,58,0.1);
+      transform: translateY(-2px);
+    }
+    .reg-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-muted);
+      border: 1px solid rgba(27,107,58,0.2);
+      border-radius: 3px;
+      padding: 4px 10px;
+      margin-bottom: 14px;
+    }
+    .reg-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .reg-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .reg-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .reg-card ul li {
+      font-size: 0.825rem;
+      color: var(--text);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reg-card ul li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .reg-card ul li:last-child { border-bottom: none; }
+
+    /* CHECKLIST CAPABILITIES */
+    .checklist {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .check-item:hover {
+      border-color: rgba(27,107,58,0.3);
+      background: var(--accent-muted);
+    }
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 0.65rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .check-item span {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* AUDIT READINESS TIMELINE */
+    .timeline {
+      position: relative;
+      margin-top: 48px;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), rgba(27,107,58,0.1));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-phase {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .timeline-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .timeline-item p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 600px;
+    }
+
+    /* SECTOR EXPERIENCE */
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .sector-card {
+      background: var(--accent-muted);
+      border: 1px solid rgba(27,107,58,0.15);
+      border-radius: 4px;
+      padding: 28px 24px;
+    }
+    .sector-icon { font-size: 1.4rem; margin-bottom: 12px; }
+    .sector-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .sector-card p {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      .page-hero { padding: 60px 24px 50px; }
+      .checklist { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo" style="text-decoration:none;">Bennett Wells</a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#expertise">Expertise</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back to Home
+    </a>
+    <p class="page-hero-eyebrow">Compliance & Regulatory</p>
+    <h1>Compliance Programs</h1>
+    <p>Building and maintaining compliance programs across heavily regulated industries — from initial gap assessment through audit certification and ongoing monitoring.</p>
+  </div>
+  <div class="page-hero-divider"></div>
+</header>
+
+<!-- REGULATION CARDS -->
+<section class="section">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Frameworks</p>
+    <h2>Regulations I Work With</h2>
+    <p class="section-text">Experience achieving and maintaining compliance across major regulatory frameworks in healthcare, government, and financial services.</p>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-badge">SOC 2</div>
+        <h3>SOC 2 Type II</h3>
+        <p>Designed and implemented SOC 2 programs from the ground up, spanning all five Trust Service Criteria.</p>
+        <ul>
+          <li>Security controls design</li>
+          <li>Evidence collection automation</li>
+          <li>Vendor risk management</li>
+          <li>Continuous monitoring setup</li>
+        </ul>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">HIPAA</div>
+        <h3>HIPAA Compliance</h3>
+        <p>Led HIPAA compliance programs across healthcare organizations — Privacy Rule, Security Rule, and Breach Notification.</p>
+        <ul>
+          <li>Risk analysis and management</li>
+          <li>PHI safeguards implementation</li>
+          <li>BAA lifecycle management</li>
+          <li>Workforce training programs</li>
+        </ul>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">Government</div>
+        <h3>Government & Federal</h3>
+        <p>Compliance experience with government sector requirements, including FISMA, FedRAMP readiness, and CMMC frameworks.</p>
+        <ul>
+          <li>FISMA control implementation</li>
+          <li>FedRAMP readiness assessment</li>
+          <li>CMMC level preparation</li>
+          <li>Authority to Operate (ATO) support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST CAPABILITIES -->
+<section class="section alt">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Capabilities</p>
+    <h2>What I Deliver</h2>
+    <p class="section-text">End-to-end compliance program management, from gap analysis through certification and ongoing maintenance.</p>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Compliance gap assessment and remediation roadmaps</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Policy and procedure development</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Technical controls design and implementation</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Audit preparation and evidence management</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Vendor and third-party risk management</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Continuous monitoring and alert programs</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Incident response and breach notification procedures</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Employee compliance training and awareness</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>Security questionnaire and customer audit support</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box">✓</div>
+        <span>GRC platform selection and implementation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT READINESS LIFECYCLE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Process</p>
+    <h2>Audit Readiness Lifecycle</h2>
+    <p class="section-text">The structured approach I use to take organizations from compliance uncertainty to certified readiness.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Step 1</div>
+        <h4>Scope & Gap Assessment</h4>
+        <p>Define the compliance scope, identify applicable controls, and conduct a detailed gap analysis to understand the current state versus requirements.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Step 2</div>
+        <h4>Remediation Planning</h4>
+        <p>Build a prioritized remediation roadmap with owners, timelines, and resource requirements — balancing risk reduction with operational realities.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Step 3</div>
+        <h4>Controls Implementation</h4>
+        <p>Design and implement technical and administrative controls, develop required policies and procedures, and train staff on their compliance obligations.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Step 4</div>
+        <h4>Pre-Audit Readiness Review</h4>
+        <p>Conduct internal readiness reviews, collect and organize evidence, and walk through audit scenarios to identify and resolve any remaining gaps.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Step 5</div>
+        <h4>Audit Support & Certification</h4>
+        <p>Manage auditor interactions, provide evidence, respond to findings, and guide the organization through to successful certification.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Step 6</div>
+        <h4>Ongoing Monitoring & Renewal</h4>
+        <p>Establish continuous monitoring, evidence collection automation, and annual review cycles to maintain compliance and prepare for recertification.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR EXPERIENCE -->
+<section class="section alt">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Sectors</p>
+    <h2>Industry Experience</h2>
+    <p class="section-text">Compliance program experience across three highly regulated sectors, each with distinct regulatory requirements and risk environments.</p>
+    <div class="sector-grid">
+      <div class="sector-card">
+        <div class="sector-icon">&#127973;</div>
+        <h4>Healthcare</h4>
+        <p>HIPAA Privacy and Security Rule compliance, PHI protection, EHR security controls, and healthcare-specific vendor risk management.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">&#127970;</div>
+        <h4>Financial Services</h4>
+        <p>SOC 2 Type II certification, financial data protection controls, and compliance with financial sector security standards and customer audit requirements.</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">&#127963;</div>
+        <h4>Government</h4>
+        <p>Federal compliance frameworks including FISMA, FedRAMP readiness, and CMMC — supporting government contracts and sensitive data handling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="section-inner">
+    <p class="label">Contact</p>
+    <h2>Let's Connect</h2>
+    <p class="section-text">Facing an upcoming audit or need to build out your compliance program? Let's talk.</p>
+    <div class="contact-links">
+      <a href="mailto:bwells@bennettwells.net" class="contact-btn">Email</a>
+      <a href="https://www.linkedin.com/in/bennett-wells8044265467/" target="_blank" class="contact-btn">LinkedIn</a>
+      <a href="https://github.com/bennettwellsnet" target="_blank" class="contact-btn">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bennett Wells</p>
+</footer>
+
+</body>
+</html>

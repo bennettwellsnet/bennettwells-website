@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud & Infrastructure | Bennett Wells</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --accent: #1565c0;
+      --accent-light: #1e88e5;
+      --accent-muted: rgba(21, 101, 192, 0.08);
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 80px 60px 60px;
+      background: linear-gradient(160deg, #061830 0%, #0d3060 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero-divider {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1565c0, #42a5f5, #1565c0);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+    .page-hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: rgba(255,255,255,0.85); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* PHASE TRACKER */
+    .phase-tracker {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-top: 48px;
+    }
+    .phase {
+      flex: 1;
+      min-width: 120px;
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .phase:first-child { border-radius: 4px 0 0 4px; }
+    .phase:last-child { border-radius: 0 4px 4px 0; }
+    .phase:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      border-left: 12px solid var(--border);
+      z-index: 2;
+    }
+    .phase:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      border-left: 12px solid #fff;
+      z-index: 3;
+    }
+    .phase-num {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .phase-name {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .phase-desc {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .phase:hover { background: var(--accent-muted); }
+
+    /* TWO-COL CAPABILITIES */
+    .cap-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .cap-col h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-muted);
+    }
+    .cap-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cap-col ul li {
+      font-size: 0.9rem;
+      color: var(--text);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cap-col ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .cap-col ul li:last-child { border-bottom: none; }
+
+    /* TECH STACK */
+    .tech-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .tech-group h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .tech-group ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tech-group ul li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-group ul li:last-child { border-bottom: none; }
+
+    /* IMPACT STATS */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .impact-card {
+      background: var(--accent-muted);
+      border: 1px solid rgba(21,101,192,0.15);
+      border-radius: 4px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .impact-num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .impact-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    @media (max-width: 700px) {
+      .page-hero { padding: 60px 24px 50px; }
+      .cap-two-col { grid-template-columns: 1fr; }
+      .phase-tracker { flex-direction: column; }
+      .phase { border-radius: 0; border-bottom: none; }
+      .phase:first-child { border-radius: 4px 4px 0 0; }
+      .phase:last-child { border-radius: 0 0 4px 4px; border-bottom: 1px solid var(--border); }
+      .phase::after, .phase::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo" style="text-decoration:none;">Bennett Wells</a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#expertise">Expertise</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back to Home
+    </a>
+    <p class="page-hero-eyebrow">Cloud & Infrastructure</p>
+    <h1>Cloud Modernization</h1>
+    <p>Leading complex cloud migrations and hybrid infrastructure transformations that improve performance, reduce cost, and increase business agility.</p>
+  </div>
+  <div class="page-hero-divider"></div>
+</header>
+
+<!-- MIGRATION PHASE TRACKER -->
+<section class="section" style="padding-top: 60px; padding-bottom: 0;">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Methodology</p>
+    <h2>Migration Framework</h2>
+    <p class="section-text">Every successful cloud migration follows a disciplined phase-by-phase approach.</p>
+    <div class="phase-tracker">
+      <div class="phase">
+        <span class="phase-num">Phase 1</span>
+        <span class="phase-name">Assess</span>
+        <span class="phase-desc">Inventory, dependencies, readiness</span>
+      </div>
+      <div class="phase">
+        <span class="phase-num">Phase 2</span>
+        <span class="phase-name">Plan</span>
+        <span class="phase-desc">Architecture, timeline, risk</span>
+      </div>
+      <div class="phase">
+        <span class="phase-num">Phase 3</span>
+        <span class="phase-name">Migrate</span>
+        <span class="phase-desc">Lift, shift, refactor</span>
+      </div>
+      <div class="phase">
+        <span class="phase-num">Phase 4</span>
+        <span class="phase-name">Optimize</span>
+        <span class="phase-desc">Cost, performance, security</span>
+      </div>
+      <div class="phase">
+        <span class="phase-num">Phase 5</span>
+        <span class="phase-name">Operate</span>
+        <span class="phase-desc">Monitoring, governance, support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Capabilities</p>
+    <h2>What I Deliver</h2>
+    <div class="cap-two-col">
+      <div class="cap-col">
+        <h4>Cloud Strategy & Migration</h4>
+        <ul>
+          <li>Cloud readiness assessments</li>
+          <li>Azure migration planning and execution</li>
+          <li>Hybrid and multi-cloud architecture</li>
+          <li>Workload prioritization and sequencing</li>
+          <li>Cloud cost modeling and optimization</li>
+          <li>Landing zone design and governance</li>
+        </ul>
+      </div>
+      <div class="cap-col">
+        <h4>Infrastructure & Operations</h4>
+        <ul>
+          <li>Network architecture and redesign</li>
+          <li>VMware and virtualization management</li>
+          <li>Disaster recovery and business continuity</li>
+          <li>Infrastructure as Code (IaC) adoption</li>
+          <li>Monitoring and observability platforms</li>
+          <li>End-user computing modernization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="section alt">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Technology</p>
+    <h2>Full Tech Stack</h2>
+    <p class="section-text">The platforms and tools I work with across cloud and infrastructure engagements.</p>
+    <div class="tech-stack">
+      <div class="tech-group">
+        <h4>Cloud Platforms</h4>
+        <ul>
+          <li>Microsoft Azure</li>
+          <li>Microsoft 365</li>
+          <li>Azure Active Directory</li>
+          <li>Azure Virtual Desktop</li>
+        </ul>
+      </div>
+      <div class="tech-group">
+        <h4>Networking</h4>
+        <ul>
+          <li>Cisco Meraki</li>
+          <li>Palo Alto Networks</li>
+          <li>SD-WAN</li>
+          <li>VPN / ZTNA</li>
+        </ul>
+      </div>
+      <div class="tech-group">
+        <h4>Virtualization</h4>
+        <ul>
+          <li>VMware vSphere</li>
+          <li>Hyper-V</li>
+          <li>Nutanix</li>
+          <li>Citrix</li>
+        </ul>
+      </div>
+      <div class="tech-group">
+        <h4>Operations</h4>
+        <ul>
+          <li>ServiceNow</li>
+          <li>Intune / SCCM</li>
+          <li>Veeam Backup</li>
+          <li>SolarWinds</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section class="section">
+  <div class="section-inner">
+    <p class="label" style="color: var(--accent);">Impact</p>
+    <h2>Results That Matter</h2>
+    <p class="section-text">Cloud and infrastructure initiatives I've led have delivered measurable business outcomes.</p>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <span class="impact-num">40%</span>
+        <span class="impact-label">Infrastructure Cost Reduction</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">99.9%</span>
+        <span class="impact-label">Uptime Achieved</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">3×</span>
+        <span class="impact-label">Faster Provisioning</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">10K+</span>
+        <span class="impact-label">Endpoints Managed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section alt">
+  <div class="section-inner">
+    <p class="label">Contact</p>
+    <h2>Let's Connect</h2>
+    <p class="section-text">Planning a cloud migration or infrastructure overhaul? Let's talk.</p>
+    <div class="contact-links">
+      <a href="mailto:bwells@bennettwells.net" class="contact-btn">Email</a>
+      <a href="https://www.linkedin.com/in/bennett-wells8044265467/" target="_blank" class="contact-btn">LinkedIn</a>
+      <a href="https://github.com/bennettwellsnet" target="_blank" class="contact-btn">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bennett Wells</p>
+</footer>
+
+</body>
+</html>
