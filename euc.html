@@ -1,534 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>End User Computing | Bennett Wells</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --surface2: #1a1a26;
-      --border: rgba(255,255,255,0.07);
-      --text: #e8e8f0;
-      --muted: #7a7a9a;
-      --accent: #d4a96a;
-      --accent-euc: #a78bfa;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>End User Computing | Bennett Wells</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+--bg: #0a0a0f;
+--surface: #12121a;
+--surface2: #1a1a26;
+--border: rgba(255,255,255,0.07);
+--text: #e8e8f0;
+--muted: #7a7a9a;
+--accent: #d4a96a;
+--accent-euc: #a78bfa;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; }
 
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 2.5rem;
-      background: rgba(10,10,15,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text); text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+/* NAV */
+nav {
+position: sticky; top: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 1.1rem 2.5rem;
+background: rgba(10,10,15,0.88);
+backdrop-filter: blur(14px);
+border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-    /* HERO */
-    .hero {
-      position: relative;
-      padding: 7rem 2.5rem 4rem;
-      max-width: 900px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -100px;
-      width: 480px; height: 480px;
-      background: radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent-euc); margin-bottom: 1.5rem;
-    }
-    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent-euc); border-radius: 2px; }
-    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1.12; margin-bottom: 1.5rem; }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero-lead { font-size: 1.1rem; color: var(--muted); max-width: 580px; line-height: 1.75; margin-bottom: 2rem; }
+/* HERO */
+.hero {
+position: relative;
+padding: 7rem 2.5rem 4rem;
+max-width: 900px;
+margin: 0 auto;
+overflow: hidden;
+}
+.hero::before {
+content: '';
+position: absolute;
+top: -60px; right: -100px;
+width: 480px; height: 480px;
+background: radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 65%);
+pointer-events: none;
+}
+.hero-eyebrow {
+display: inline-flex; align-items: center; gap: 0.5rem;
+font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+text-transform: uppercase; color: var(--accent-euc); margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent-euc); border-radius: 2px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1.12; margin-bottom: 1.5rem; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-lead { font-size: 1.1rem; color: var(--muted); max-width: 580px; line-height: 1.75; margin-bottom: 2rem; }
 
-    /* SCALE BADGE */
-    .scale-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--surface);
-      border: 1px solid rgba(167,139,250,0.25);
-      border-radius: 8px;
-      padding: 0.65rem 1.1rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--accent-euc);
-    }
-    .scale-badge span { color: var(--muted); font-weight: 400; }
+/* SCALE BADGE */
+.scale-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.6rem;
+background: var(--surface);
+border: 1px solid rgba(167,139,250,0.25);
+border-radius: 8px;
+padding: 0.65rem 1.1rem;
+font-size: 0.88rem;
+font-weight: 600;
+color: var(--accent-euc);
+}
+.scale-badge span { color: var(--muted); font-weight: 400; }
 
-    /* STAT BAR */
-    .stat-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .stat { background: var(--surface); padding: 1.5rem 1.25rem; text-align: center; }
-    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent-euc); line-height: 1; margin-bottom: 0.4rem; }
-    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; line-height: 1.4; }
+/* STAT BAR */
+.stat-bar {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1px;
+background: var(--border);
+border: 1px solid var(--border);
+border-radius: 12px;
+overflow: hidden;
+max-width: 900px;
+margin: 0 auto;
+}
+.stat { background: var(--surface); padding: 1.5rem 1.25rem; text-align: center; }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent-euc); line-height: 1; margin-bottom: 0.4rem; }
+.stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; line-height: 1.4; }
 
-    /* SECTIONS */
-    .section { max-width: 900px; margin: 0 auto; padding: 3.5rem 2.5rem; }
-    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-euc); margin-bottom: 1rem; }
-    .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
-    .section > p { color: var(--muted); max-width: 640px; margin-bottom: 2.5rem; }
-    hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+/* SECTIONS */
+.section { max-width: 900px; margin: 0 auto; padding: 3.5rem 2.5rem; }
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-euc); margin-bottom: 1rem; }
+.section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
+.section > p { color: var(--muted); max-width: 640px; margin-bottom: 2.5rem; }
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
 
-    /* RESPONSIBILITY CARDS */
-    .resp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1.25rem; }
-    .resp-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .resp-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-euc), transparent);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-    .resp-card:hover { border-color: rgba(167,139,250,0.25); transform: translateY(-2px); }
-    .resp-card:hover::after { opacity: 1; }
-    .resp-icon { font-size: 1.4rem; margin-bottom: 1rem; }
-    .resp-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .resp-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+/* RESPONSIBILITY CARDS */
+.resp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1.25rem; }
+.resp-card {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 1.75rem 1.5rem;
+transition: border-color 0.2s, transform 0.2s;
+position: relative;
+overflow: hidden;
+}
+.resp-card::after {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+background: linear-gradient(90deg, var(--accent-euc), transparent);
+opacity: 0;
+transition: opacity 0.25s;
+}
+.resp-card:hover { border-color: rgba(167,139,250,0.25); transform: translateY(-2px); }
+.resp-card:hover::after { opacity: 1; }
+.resp-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+.resp-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+.resp-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
 
-    /* DEVICE BREAKDOWN TABLE */
-    .device-table { width: 100%; border-collapse: collapse; }
-    .device-table th {
-      text-align: left;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-euc);
-      padding: 0.75rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .device-table td {
-      padding: 1rem 1.25rem;
-      font-size: 0.88rem;
-      color: var(--text);
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    .device-table tr:last-child td { border-bottom: none; }
-    .device-table tr:hover td { background: var(--surface2); }
-    .device-table td:first-child { font-weight: 600; white-space: nowrap; }
-    .device-table td.muted { color: var(--muted); font-size: 0.85rem; }
-    .table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
+/* DEVICE BREAKDOWN TABLE */
+.device-table { width: 100%; border-collapse: collapse; }
+.device-table th {
+text-align: left;
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--accent-euc);
+padding: 0.75rem 1.25rem;
+border-bottom: 1px solid var(--border);
+}
+.device-table td {
+padding: 1rem 1.25rem;
+font-size: 0.88rem;
+color: var(--text);
+border-bottom: 1px solid var(--border);
+vertical-align: top;
+}
+.device-table tr:last-child td { border-bottom: none; }
+.device-table tr:hover td { background: var(--surface2); }
+.device-table td:first-child { font-weight: 600; white-space: nowrap; }
+.device-table td.muted { color: var(--muted); font-size: 0.85rem; }
+.table-wrap {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 12px;
+overflow: hidden;
+}
 
-    /* BAR CHART */
-    .bar-chart { display: flex; flex-direction: column; gap: 1rem; }
-    .bar-row { display: grid; grid-template-columns: 140px 1fr 50px; gap: 1rem; align-items: center; }
-    .bar-label { font-size: 0.85rem; font-weight: 500; color: var(--text); }
-    .bar-track { background: var(--surface2); border-radius: 4px; height: 10px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent-euc), rgba(167,139,250,0.5)); }
-    .bar-pct { font-size: 0.82rem; font-weight: 600; color: var(--accent-euc); text-align: right; }
+/* TOOLING STACK */
+.tooling-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.tool-group {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 1.5rem;
+transition: border-color 0.2s;
+}
+.tool-group:hover { border-color: rgba(167,139,250,0.2); }
+.tool-group-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-euc); margin-bottom: 1rem; }
+.tool-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tool-chip {
+background: var(--surface2);
+border: 1px solid var(--border);
+border-radius: 5px;
+padding: 0.3rem 0.7rem;
+font-size: 0.82rem;
+font-weight: 500;
+color: var(--text);
+}
 
-    /* TOOLING STACK */
-    .tooling-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .tool-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
-    .tool-group:hover { border-color: rgba(167,139,250,0.2); }
-    .tool-group-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-euc); margin-bottom: 1rem; }
-    .tool-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .tool-chip {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 0.3rem 0.7rem;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text);
-    }
+/* DAY IN THE LIFE */
+.day-list { display: flex; flex-direction: column; gap: 0; }
+.day-item {
+display: grid;
+grid-template-columns: 100px 1fr;
+gap: 1.5rem;
+padding: 1.25rem 0;
+border-bottom: 1px solid var(--border);
+}
+.day-item:last-child { border-bottom: none; }
+.day-time { font-size: 0.8rem; font-weight: 700; color: var(--accent-euc); letter-spacing: 0.05em; padding-top: 0.15rem; }
+.day-detail h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.25rem; }
+.day-detail p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 
-    /* DAY IN THE LIFE */
-    .day-list { display: flex; flex-direction: column; gap: 0; }
-    .day-item {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 1.5rem;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .day-item:last-child { border-bottom: none; }
-    .day-time { font-size: 0.8rem; font-weight: 700; color: var(--accent-euc); letter-spacing: 0.05em; padding-top: 0.15rem; }
-    .day-detail h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .day-detail p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+/* CTA */
+.cta-section { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem 6rem; text-align: center; }
+.cta-section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
+.cta-section p { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.75rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: #0a0a0f; }
+.btn-primary:hover { background: #e0b87a; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); margin-left: 0.75rem; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--accent); }
 
-    /* CTA */
-    .cta-section { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem 6rem; text-align: center; }
-    .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 1rem; }
-    .cta-section p { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.75rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .btn-primary { background: var(--accent); color: #0a0a0f; }
-    .btn-primary:hover { background: #e0b87a; transform: translateY(-1px); }
-    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); margin-left: 0.75rem; }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-    footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
-
-    @media (max-width: 640px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-links { gap: 1rem; }
-      .hero, .section, .cta-section { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .hero { padding-top: 4rem; }
-      .stat-bar { grid-template-columns: repeat(2, 1fr); }
-      .tooling-grid { grid-template-columns: 1fr; }
-      .bar-row { grid-template-columns: 110px 1fr 40px; }
-      .day-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-    }
-  </style>
+@media (max-width: 640px) {
+nav { padding: 1rem 1.25rem; }
+.nav-links { gap: 1rem; }
+.hero, .section, .cta-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+.hero { padding-top: 4rem; }
+.stat-bar { grid-template-columns: repeat(2, 1fr); }
+.tooling-grid { grid-template-columns: 1fr; }
+.day-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+}
+</style>
 </head>
 <body>
 
-  <nav>
-    <a class="nav-logo" href="/">Bennett Wells</a>
-    <ul class="nav-links">
-      <li><a href="/#about">About</a></li>
-      <li><a href="/#expertise">Expertise</a></li>
-      <li><a href="/security">Security</a></li>
-      <li><a href="/cloud">Cloud</a></li>
-      <li><a href="/compliance">Compliance</a></li>
-      <li><a href="/euc" class="active">EUC</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+<a class="nav-logo" href="/">Bennett Wells</a>
+<ul class="nav-links">
+<li><a href="/#about">About</a></li>
+<li><a href="/#expertise">Expertise</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/cloud">Cloud</a></li>
+<li><a href="/compliance">Compliance</a></li>
+<li><a href="/euc" class="active">EUC</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-eyebrow">End User Computing</div>
-    <h1>Keeping <em>1,000 Users</em><br>Productive</h1>
-    <p class="hero-lead">
-      Managing a mixed Windows and Mac environment across 1,000 users -- balancing two distinct
-      platforms, unified through Intune, with the tools and processes to keep both productive and secure.
-    </p>
-    <div class="scale-badge">
-      👥 ~1,000 managed endpoints <span>&nbsp;· roughly 50% Windows, 50% Mac</span>
-    </div>
-  </header>
+<!-- HERO -->
+<header class="hero">
+<div class="hero-eyebrow">End User Computing</div>
+<h1>Keeping <em>~1,000 Users</em><br>Productive</h1>
+<p class="hero-lead">
+Managing a mixed Windows and Mac environment across approximately 1,000 users -- balancing two distinct
+platforms, unified through Intune, with the tools and processes to keep both productive and secure.
+</p>
+<div class="scale-badge">
+👥 ~1,000 managed endpoints <span>&nbsp;· Windows &amp; Mac</span>
+</div>
+</header>
 
-  <!-- STAT BAR -->
-  <div class="stat-bar">
-    <div class="stat">
-      <div class="stat-num">1,000</div>
-      <div class="stat-label">Managed Users & Devices</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">~50/50</div>
-      <div class="stat-label">Windows & Mac Split</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">Intune</div>
-      <div class="stat-label">Unified Management Platform</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">M365</div>
-      <div class="stat-label">Primary Productivity Platform</div>
-    </div>
-  </div>
+<!-- STAT BAR -->
+<div class="stat-bar">
+<div class="stat">
+<div class="stat-num">~1,000</div>
+<div class="stat-label">Managed Users &amp; Devices</div>
+</div>
+<div class="stat">
+<div class="stat-num">Mixed</div>
+<div class="stat-label">Windows &amp; Mac Environment</div>
+</div>
+<div class="stat">
+<div class="stat-num">Intune</div>
+<div class="stat-label">Unified Management Platform</div>
+</div>
+<div class="stat">
+<div class="stat-num">M365</div>
+<div class="stat-label">Primary Productivity Platform</div>
+</div>
+</div>
 
-  <hr class="divider" style="margin-top: 0;" />
+<hr class="divider" style="margin-top: 0;" />
 
-  <!-- RESPONSIBILITIES -->
-  <section class="section" id="responsibilities">
-    <div class="section-label">Scope of Work</div>
-    <h2>What EUC Looks Like at This Scale</h2>
-    <p>Managing end user computing for 1,000 users across a mixed Windows and Mac environment means maintaining consistent policies, security, and support across two distinct platforms.</p>
-    <div class="resp-grid">
-      <div class="resp-card">
-        <div class="resp-icon">💻</div>
-        <h3>Device Lifecycle Management</h3>
-        <p>Overseeing procurement, enrollment, and retirement of Windows laptops and MacBooks -- Autopilot for Windows, Jamf for Mac, both managed through Intune.</p>
-      </div>
-      <div class="resp-card">
-        <div class="resp-icon">📦</div>
-        <h3>Application Deployment</h3>
-        <p>Managing software packaging, distribution, and updates through Intune -- ensuring users have the right tools with minimal disruption.</p>
-      </div>
-      <div class="resp-card">
-        <div class="resp-icon">🔒</div>
-        <h3>Endpoint Security & Compliance</h3>
-        <p>Enforcing device compliance policies, managing EDR across the fleet, and maintaining configuration baselines aligned to security standards.</p>
-      </div>
-      <div class="resp-card">
-        <div class="resp-icon">🆔</div>
-        <h3>Identity & Access Management</h3>
-        <p>User provisioning and deprovisioning, Entra ID group management, MFA enforcement, and Conditional Access policy administration.</p>
-      </div>
-      <div class="resp-card">
-        <div class="resp-icon">🖥️</div>
-        <h3>Virtual Desktop & Remote Access</h3>
-        <p>Supporting hybrid work through Azure Virtual Desktop and remote access solutions that keep distributed users productive and secure.</p>
-      </div>
-      <div class="resp-card">
-        <div class="resp-icon">🛎️</div>
-        <h3>Tier 2 Support & Escalation</h3>
-        <p>Handling escalated desktop and application issues, working alongside helpdesk teams to resolve incidents and reduce repeat contacts.</p>
-      </div>
-    </div>
-  </section>
+<!-- RESPONSIBILITIES -->
+<section class="section" id="responsibilities">
+<div class="section-label">Scope of Work</div>
+<h2>What EUC Looks Like at This Scale</h2>
+<p>Managing end user computing for approximately 1,000 users across a mixed Windows and Mac environment means maintaining consistent policies, security, and support across two distinct platforms.</p>
+<div class="resp-grid">
+<div class="resp-card">
+<div class="resp-icon">💻</div>
+<h3>Device Lifecycle Management</h3>
+<p>Overseeing procurement, enrollment, and retirement of Windows laptops and MacBooks -- Autopilot for Windows, Jamf for Mac, both managed through Intune.</p>
+</div>
+<div class="resp-card">
+<div class="resp-icon">📦</div>
+<h3>Application Deployment</h3>
+<p>Managing software packaging, distribution, and updates through Intune -- ensuring users have the right tools with minimal disruption.</p>
+</div>
+<div class="resp-card">
+<div class="resp-icon">🔒</div>
+<h3>Endpoint Security &amp; Compliance</h3>
+<p>Enforcing device compliance policies, managing EDR across the fleet, and maintaining configuration baselines aligned to security standards.</p>
+</div>
+<div class="resp-card">
+<div class="resp-icon">🆔</div>
+<h3>Identity &amp; Access Management</h3>
+<p>User provisioning and deprovisioning, Entra ID group management, MFA enforcement, and Conditional Access policy administration.</p>
+</div>
+<div class="resp-card">
+<div class="resp-icon">🖥️</div>
+<h3>Virtual Desktop &amp; Remote Access</h3>
+<p>Supporting hybrid work through Azure Virtual Desktop and remote access solutions that keep distributed users productive and secure.</p>
+</div>
+<div class="resp-card">
+<div class="resp-icon">🛎️</div>
+<h3>Tier 2 Support &amp; Escalation</h3>
+<p>Handling escalated desktop and application issues, working alongside helpdesk teams to resolve incidents and reduce repeat contacts.</p>
+</div>
+</div>
+</section>
 
-  <hr class="divider" />
+<hr class="divider" />
 
-  <!-- DEVICE BREAKDOWN -->
-  <section class="section" id="fleet">
-    <div class="section-label">Fleet Overview</div>
-    <h2>The Device Landscape</h2>
-    <p>A mixed-platform environment at the 1,000-user scale -- roughly half Windows, half Mac -- managed through a single Intune tenant with platform-specific configuration profiles.</p>
+<!-- DEVICE BREAKDOWN -->
+<section class="section" id="fleet">
+<div class="section-label">Fleet Overview</div>
+<h2>The Device Landscape</h2>
+<p>A mixed-platform environment at approximately the 1,000-user scale -- Windows and Mac -- managed through a single Intune tenant with platform-specific configuration profiles.</p>
+<div class="table-wrap">
+<table class="device-table">
+<thead>
+<tr>
+<th>Device Type</th>
+<th>Platform</th>
+<th>Management</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows Laptops</td>
+<td>Windows 11</td>
+<td>Intune / Autopilot</td>
+<td class="muted">Zero-touch provisioning via Windows Autopilot.</td>
+</tr>
+<tr>
+<td>MacBooks</td>
+<td>macOS (Sequoia)</td>
+<td>Intune / Jamf</td>
+<td class="muted">Enrolled and managed via Jamf with Intune integration for compliance policies.</td>
+</tr>
+<tr>
+<td>Mobile Devices</td>
+<td>iOS / Android</td>
+<td>Intune MAM/MDM</td>
+<td class="muted">BYOD and COPE policies enforced via Intune app protection.</td>
+</tr>
+<tr>
+<td>Virtual Desktops</td>
+<td>Windows 11 (AVD)</td>
+<td>Azure Virtual Desktop</td>
+<td class="muted">Remote and contractor access. Centrally managed session hosts.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 
-    <div class="table-wrap" style="margin-bottom: 2.5rem;">
-      <table class="device-table">
-        <thead>
-          <tr>
-            <th>Device Type</th>
-            <th>Platform</th>
-            <th>Management</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Windows Laptops</td>
-            <td>Windows 11</td>
-            <td>Intune / Autopilot</td>
-            <td class="muted">~50% of fleet. Zero-touch provisioning via Windows Autopilot.</td>
-          </tr>
-          <tr>
-            <td>MacBooks</td>
-            <td>macOS (Sequoia)</td>
-            <td>Intune / Jamf</td>
-            <td class="muted">~50% of fleet. Enrolled and managed via Jamf with Intune integration for compliance policies.</td>
-          </tr>
-          <tr>
-            <td>Mobile Devices</td>
-            <td>iOS / Android</td>
-            <td>Intune MAM/MDM</td>
-            <td class="muted">BYOD and COPE policies enforced via Intune app protection.</td>
-          </tr>
-          <tr>
-            <td>Virtual Desktops</td>
-            <td>Windows 11 (AVD)</td>
-            <td>Azure Virtual Desktop</td>
-            <td class="muted">Remote and contractor access. Centrally managed session hosts.</td>
-          </tr>
-          <tr>
-            <td>Shared / Kiosk</td>
-            <td>Windows 11</td>
-            <td>Intune Kiosk Mode</td>
-            <td class="muted">Single-purpose devices for frontline or lobby use cases.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<hr class="divider" />
 
-    <div class="section-label" style="margin-bottom: 1.25rem;">OS Compliance Rate by Device Type</div>
-    <div class="bar-chart">
-      <div class="bar-row">
-        <div class="bar-label">Windows Laptops</div>
-        <div class="bar-track"><div class="bar-fill" style="width: 97%"></div></div>
-        <div class="bar-pct">97%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">MacBooks</div>
-        <div class="bar-track"><div class="bar-fill" style="width: 95%"></div></div>
-        <div class="bar-pct">95%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Mobile (MDM)</div>
-        <div class="bar-track"><div class="bar-fill" style="width: 89%"></div></div>
-        <div class="bar-pct">89%</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Virtual Desktops</div>
-        <div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div>
-        <div class="bar-pct">100%</div>
-      </div>
-    </div>
-  </section>
+<!-- TOOLING -->
+<section class="section" id="tooling">
+<div class="section-label">Toolchain</div>
+<h2>The EUC Stack</h2>
+<p>The platforms and tools that keep approximately 1,000 endpoints managed, secure, and supported.</p>
+<div class="tooling-grid">
+<div class="tool-group">
+<div class="tool-group-label">Device Management</div>
+<div class="tool-chips">
+<span class="tool-chip">Microsoft Intune</span>
+<span class="tool-chip">Windows Autopilot</span>
+<span class="tool-chip">Jamf</span>
+<span class="tool-chip">Entra ID</span>
+<span class="tool-chip">Fortimonitor</span>
+</div>
+</div>
+<div class="tool-group">
+<div class="tool-group-label">Productivity &amp; Collaboration</div>
+<div class="tool-chips">
+<span class="tool-chip">Microsoft 365</span>
+<span class="tool-chip">Microsoft Teams</span>
+<span class="tool-chip">SharePoint Online</span>
+<span class="tool-chip">OneDrive</span>
+</div>
+</div>
+<div class="tool-group">
+<div class="tool-group-label">Virtual &amp; Remote Access</div>
+<div class="tool-chips">
+<span class="tool-chip">Azure Virtual Desktop</span>
+<span class="tool-chip">Windows 365</span>
+<span class="tool-chip">Conditional Access</span>
+</div>
+</div>
+<div class="tool-group">
+<div class="tool-group-label">Security &amp; Endpoint Protection</div>
+<div class="tool-chips">
+<span class="tool-chip">Fortinet</span>
+<span class="tool-chip">MFA / Authenticator</span>
+<span class="tool-chip">Intune Compliance Policies</span>
+</div>
+</div>
+<div class="tool-group">
+<div class="tool-group-label">Support &amp; ITSM</div>
+<div class="tool-chips">
+<span class="tool-chip">Service Desk Plus</span>
+<span class="tool-chip">Remote Assistance</span>
+<span class="tool-chip">Knowledge Base</span>
+</div>
+</div>
+<div class="tool-group">
+<div class="tool-group-label">Automation &amp; Scripting</div>
+<div class="tool-chips">
+<span class="tool-chip">PowerShell</span>
+<span class="tool-chip">Power Automate</span>
+<span class="tool-chip">GitHub</span>
+<span class="tool-chip">Claude / Copilot</span>
+</div>
+</div>
+</div>
+</section>
 
-  <hr class="divider" />
+<hr class="divider" />
 
-  <!-- TOOLING -->
-  <section class="section" id="tooling">
-    <div class="section-label">Toolchain</div>
-    <h2>The EUC Stack</h2>
-    <p>The platforms and tools that keep 1,000 endpoints managed, secure, and supported.</p>
-    <div class="tooling-grid">
-      <div class="tool-group">
-        <div class="tool-group-label">Device Management</div>
-        <div class="tool-chips">
-          <span class="tool-chip">Microsoft Intune</span>
-          <span class="tool-chip">Windows Autopilot</span>
-          <span class="tool-chip">Jamf</span>
-          <span class="tool-chip">Entra ID</span>
-          <span class="tool-chip">Fortimonitor</span>
-        </div>
-      </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Productivity & Collaboration</div>
-        <div class="tool-chips">
-          <span class="tool-chip">Microsoft 365</span>
-          <span class="tool-chip">Microsoft Teams</span>
-          <span class="tool-chip">SharePoint Online</span>
-          <span class="tool-chip">OneDrive</span>
-        </div>
-      </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Virtual & Remote Access</div>
-        <div class="tool-chips">
-          <span class="tool-chip">Azure Virtual Desktop</span>
-          <span class="tool-chip">Windows 365</span>
-          <span class="tool-chip">Conditional Access</span>
-        </div>
-      </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Security & Endpoint Protection</div>
-        <div class="tool-chips">
-          <span class="tool-chip">Microsoft Defender</span>
-          <span class="tool-chip">Fortinet</span>
-          <span class="tool-chip">MFA / Authenticator</span>
-          <span class="tool-chip">Intune Compliance Policies</span>
-        </div>
-      </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Support & ITSM</div>
-        <div class="tool-chips">
-          <span class="tool-chip">ServiceNow</span>
-          <span class="tool-chip">Remote Assistance</span>
-          <span class="tool-chip">Knowledge Base</span>
-        </div>
-      </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Automation & Scripting</div>
-        <div class="tool-chips">
-          <span class="tool-chip">PowerShell</span>
-          <span class="tool-chip">Power Automate</span>
-          <span class="tool-chip">GitHub</span>
-          <span class="tool-chip">Claude / Copilot</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- DAY IN THE LIFE -->
+<section class="section" id="operations">
+<div class="section-label">Operations</div>
+<h2>What Day-to-Day EUC Looks Like</h2>
+<p>A snapshot of the recurring operational work that keeps approximately 1,000 endpoints running smoothly.</p>
+<div class="day-list">
+<div class="day-item">
+<div class="day-time">Daily</div>
+<div class="day-detail">
+<h4>Device &amp; Compliance Monitoring</h4>
+<p>Reviewing Intune compliance dashboards, addressing non-compliant devices, and triaging escalated helpdesk tickets from the EUC queue.</p>
+</div>
+</div>
+<div class="day-item">
+<div class="day-time">Weekly</div>
+<div class="day-detail">
+<h4>Patch &amp; Update Review</h4>
+<p>Monitoring Windows Update for Business rings and macOS update policies in Intune, reviewing application update deployments across both platforms, and validating patch compliance targets.</p>
+</div>
+</div>
+<div class="day-item">
+<div class="day-time">Weekly</div>
+<div class="day-detail">
+<h4>New Hire Provisioning</h4>
+<p>Coordinating device setup via Autopilot for Windows and Jamf for Mac, account creation, license assignment, and application access for new employees and contractors.</p>
+</div>
+</div>
+<div class="day-item">
+<div class="day-time">Monthly</div>
+<div class="day-detail">
+<h4>Access Reviews</h4>
+<p>Reviewing Entra ID group memberships, application assignments, and license utilization -- removing stale access and reclaiming unused licenses.</p>
+</div>
+</div>
+<div class="day-item">
+<div class="day-time">Monthly</div>
+<div class="day-detail">
+<h4>Fleet Reporting</h4>
+<p>Generating device health, compliance, and software inventory reports for IT leadership and, where applicable, compliance evidence packages.</p>
+</div>
+</div>
+<div class="day-item">
+<div class="day-time">Quarterly</div>
+<div class="day-detail">
+<h4>Lifecycle &amp; Refresh Planning</h4>
+<p>Identifying devices approaching end of life, coordinating procurement cycles, and planning deployment waves to minimize user disruption.</p>
+</div>
+</div>
+<div class="day-item">
+<div class="day-time">Ongoing</div>
+<div class="day-detail">
+<h4>Policy &amp; Documentation</h4>
+<p>Keeping device configuration policies, runbooks, and onboarding documentation current as the environment evolves.</p>
+</div>
+</div>
+</div>
+</section>
 
-  <hr class="divider" />
+<hr class="divider" />
 
-  <!-- DAY IN THE LIFE -->
-  <section class="section" id="operations">
-    <div class="section-label">Operations</div>
-    <h2>What Day-to-Day EUC Looks Like</h2>
-    <p>A snapshot of the recurring operational work that keeps a 1,000-user environment running smoothly.</p>
-    <div class="day-list">
-      <div class="day-item">
-        <div class="day-time">Daily</div>
-        <div class="day-detail">
-          <h4>Device & Compliance Monitoring</h4>
-          <p>Reviewing Intune compliance dashboards, addressing non-compliant devices, and triaging escalated helpdesk tickets from the EUC queue.</p>
-        </div>
-      </div>
-      <div class="day-item">
-        <div class="day-time">Weekly</div>
-        <div class="day-detail">
-          <h4>Patch & Update Review</h4>
-          <p>Monitoring Windows Update for Business rings and macOS update policies in Intune, reviewing application update deployments across both platforms, and validating patch compliance targets.</p>
-        </div>
-      </div>
-      <div class="day-item">
-        <div class="day-time">Weekly</div>
-        <div class="day-detail">
-          <h4>New Hire Provisioning</h4>
-          <p>Coordinating device setup via Autopilot for Windows and Jamf for Mac, account creation, license assignment, and application access for new employees and contractors.</p>
-        </div>
-      </div>
-      <div class="day-item">
-        <div class="day-time">Monthly</div>
-        <div class="day-detail">
-          <h4>Access Reviews</h4>
-          <p>Reviewing Entra ID group memberships, application assignments, and license utilization -- removing stale access and reclaiming unused licenses.</p>
-        </div>
-      </div>
-      <div class="day-item">
-        <div class="day-time">Monthly</div>
-        <div class="day-detail">
-          <h4>Fleet Reporting</h4>
-          <p>Generating device health, compliance, and software inventory reports for IT leadership and, where applicable, compliance evidence packages.</p>
-        </div>
-      </div>
-      <div class="day-item">
-        <div class="day-time">Quarterly</div>
-        <div class="day-detail">
-          <h4>Lifecycle & Refresh Planning</h4>
-          <p>Identifying devices approaching end of life, coordinating procurement cycles, and planning deployment waves to minimize user disruption.</p>
-        </div>
-      </div>
-      <div class="day-item">
-        <div class="day-time">Ongoing</div>
-        <div class="day-detail">
-          <h4>Policy & Documentation</h4>
-          <p>Keeping device configuration policies, runbooks, and onboarding documentation current as the environment evolves.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="cta-section">
+<h2>Managing a Similar Environment?</h2>
+<p>Happy to connect with IT teams navigating the complexities of modern endpoint management at scale.</p>
+<a href="mailto:bwells@bennettwells.net" class="btn btn-primary">Get in Touch</a>
+<a href="/" class="btn btn-ghost">Back to Home</a>
+</div>
 
-  <hr class="divider" />
-
-  <div class="cta-section">
-    <h2>Managing a Similar Environment?</h2>
-    <p>Happy to connect with IT teams navigating the complexities of modern endpoint management at scale.</p>
-    <a href="mailto:bwells@bennettwells.net" class="btn btn-primary">Get in Touch</a>
-    <a href="/" class="btn btn-ghost">Back to Home</a>
-  </div>
-
-  <footer>
-    <p>&copy; 2026 Bennett Wells &mdash; <a href="/">bennettwells.net</a></p>
-  </footer>
+<footer>
+<p>&copy; 2026 Bennett Wells &mdash; <a href="/">bennettwells.net</a></p>
+</footer>
 
 </body>
 </html>
