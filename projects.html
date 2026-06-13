@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Projects | Bennett Wells</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .projects-hero {
+    background: var(--navy-deep);
+    padding: 140px 60px 90px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .projects-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,53,96,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      linear-gradient(160deg, #0a1628 0%, #0f2044 60%, #0a1628 100%);
+  }
+
+  .projects-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%);
+  }
+
+  .projects-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .projects-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+
+  .projects-hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: gap 0.2s;
+  }
+
+  .back-link:hover { gap: 12px; }
+
+  .back-link::before {
+    content: '←';
+    font-size: 0.9rem;
+  }
+
+  .demos-section {
+    padding: 80px 60px 110px;
+    background: var(--bg-alt);
+  }
+
+  .demos-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .demo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  }
+
+  .demo-card:hover {
+    box-shadow: 0 12px 40px rgba(15,32,68,0.1);
+    transform: translateY(-4px);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .demo-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .demo-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  .demo-arrow {
+    font-size: 1.1rem;
+    color: var(--muted);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .demo-card:hover .demo-arrow {
+    color: var(--navy);
+    transform: translate(2px, -2px);
+  }
+
+  .demo-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .demo-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .demo-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tech-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--bg-alt);
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .section-intro {
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 700px) {
+    .projects-hero { padding: 100px 24px 60px; }
+    .demos-section { padding: 60px 24px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar scrolled" id="navbar">
+  <a href="/" class="nav-logo">BW</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/#about">About</a>
+    <a href="/#expertise">Expertise</a>
+    <a href="/projects" style="color:#fff;">Projects</a>
+    <a href="/#contact">Contact</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="projects-hero">
+  <div class="projects-hero-bg"></div>
+  <div class="projects-hero-grid"></div>
+  <div class="projects-hero-content">
+    <a href="/" class="back-link">Back to Home</a>
+    <p class="hero-eyebrow">Work</p>
+    <h1>Demo Projects</h1>
+    <p>A collection of interactive web demos — built with vanilla JS, WebAssembly, and modern CSS. Each one explores a different tool or concept in practice.</p>
+  </div>
+</div>
+
+<div class="demos-section reveal">
+  <div class="demos-inner">
+    <div class="section-intro">
+      <p class="label">Live Demos</p>
+      <h2 style="margin-bottom: 16px;">Four Projects, Four Ideas</h2>
+      <p class="section-text">These are fully static sites — no backend, no framework. Each demo is deployed on Cloudflare Pages and served at a subpath of this site.</p>
+    </div>
+
+    <div class="demo-grid">
+
+      <a href="/spacexdemo" class="demo-card">
+        <div class="demo-card-header">
+          <span class="demo-tag">Space</span>
+          <span class="demo-arrow">&#8599;</span>
+        </div>
+        <h3>SpaceX 2026 Rocket Counter</h3>
+        <p>A live-style counter tracking SpaceX launches in 2026. Includes a mission simulator, launch log, and progress toward the annual cadence goal.</p>
+        <div class="demo-footer">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Tailwind CSS</span>
+          <span class="tech-tag">Cloudflare Pages</span>
+        </div>
+      </a>
+
+      <a href="/patio" class="demo-card">
+        <div class="demo-card-header">
+          <span class="demo-tag">DIY</span>
+          <span class="demo-arrow">&#8599;</span>
+        </div>
+        <h3>Paver Patio Foundation Guide</h3>
+        <p>A step-by-step guide to building a paver patio that lasts — focused on the foundation prework most DIYers skip. Includes a materials calculator and readiness checklist.</p>
+        <div class="demo-footer">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Tailwind CSS</span>
+          <span class="tech-tag">Cloudflare Pages</span>
+        </div>
+      </a>
+
+      <a href="/paintcalc" class="demo-card">
+        <div class="demo-card-header">
+          <span class="demo-tag">Productivity</span>
+          <span class="demo-arrow">&#8599;</span>
+        </div>
+        <h3>PaintCalc — Painting Productivity Suite</h3>
+        <p>Professional-grade calculators for area, paint quantity, cost, and time. Built with clean, maintainable ES modules and a live-updating project estimator.</p>
+        <div class="demo-footer">
+          <span class="tech-tag">ES Modules</span>
+          <span class="tech-tag">Tailwind CSS</span>
+          <span class="tech-tag">Cloudflare Pages</span>
+        </div>
+      </a>
+
+      <a href="/doorwasm" class="demo-card">
+        <div class="demo-card-header">
+          <span class="demo-tag">WebAssembly</span>
+          <span class="demo-arrow">&#8599;</span>
+        </div>
+        <h3>DoorWasm — Replacement Door Planner</h3>
+        <p>A door replacement project planner where the heavy optimization math runs in a Rust-compiled WebAssembly module. Calculates material takeoffs, cost, and install time.</p>
+        <div class="demo-footer">
+          <span class="tech-tag">WebAssembly</span>
+          <span class="tech-tag">Rust</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Tailwind CSS</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<section id="contact" class="section alt reveal">
+  <div class="section-inner contact-inner">
+    <div class="contact-left">
+      <p class="label">Contact</p>
+      <h2>Let's Connect</h2>
+      <p class="section-text">Have a project in mind, exploring a new opportunity, or just want to say hi? Reach out.</p>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:bwells@bennettwells.net" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">bwells@bennettwells.net</span>
+        <span class="contact-link-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.linkedin.com/in/bennett-wells8044265467/" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-value">bennett-wells</span>
+        <span class="contact-link-arrow">&#8599;</span>
+      </a>
+      <a href="https://github.com/bennettwellsnet" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span class="contact-link-label">GitHub</span>
+        <span class="contact-link-value">bennettwellsnet</span>
+        <span class="contact-link-arrow">&#8599;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Bennett Wells</span>
+    <span>&#169; 2026</span>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  toggle.classList.toggle('active');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    toggle.classList.remove('active');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('revealed');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+          </html>
