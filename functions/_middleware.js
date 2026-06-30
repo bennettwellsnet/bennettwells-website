@@ -2,6 +2,7 @@ const COOKIE_NAME = 'alaska_trip_auth';
 const COOKIE_PATH = '/alaskatrip';
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 const AUTH_SALT = 'alaska-trip-auth-v1';
+const PROTECTED_PREFIX = '/alaskatrip';
 
 function safeEqual(a, b) {
   if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) {
@@ -36,6 +37,10 @@ function getCookie(request, name) {
     if (key === name) return rest.join('=');
   }
   return null;
+}
+
+function isProtectedPath(pathname) {
+  return pathname === PROTECTED_PREFIX || pathname.startsWith(`${PROTECTED_PREFIX}/`);
 }
 
 function loginPage(errorMessage = '') {
@@ -168,6 +173,11 @@ function loginPage(errorMessage = '') {
 export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
+
+  if (!isProtectedPath(url.pathname)) {
+    return next();
+  }
+
   const password = env.ALASKA_TRIP_PASSWORD;
 
   if (!password) {
