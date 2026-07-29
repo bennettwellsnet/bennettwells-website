@@ -4,17 +4,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  # Single site-wide CSP (path-specific rules previously duplicated headers)
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: blob: https://*.basemaps.cartocdn.com https://basemaps.cartocdn.com https://*.tile.openstreetmap.org; connect-src 'self' https://api.spacexdata.com https://router.project-osrm.org https://nominatim.openstreetmap.org; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
-
-# Do not cache sensitive path probes if any slip through
-/.git/*
-  Cache-Control: no-store
-  X-Robots-Tag: noindex
-
-/.DS_Store
-  Cache-Control: no-store
-  X-Robots-Tag: noindex
 
 /.well-known/security.txt
   Content-Type: text/plain; charset=utf-8
