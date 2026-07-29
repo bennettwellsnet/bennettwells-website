@@ -1,0 +1,14 @@
+# Cloudflare Pages: never publish these even if present in the project dir
+.git
+.git/**
+.DS_Store
+**/.DS_Store
+.claude
+.claude/**
+.env
+.env.*
+*.pem
+*.key
+node_modules
+.wrangler
+.cache

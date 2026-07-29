@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editors / AI tooling
+.claude/
+.idea/
+.vscode/
+*.swp
+*~
+
+# Env and secrets (never publish)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+credentials.json
+secrets.json
+
+# Dependencies / build debris (if ever present at site root)
+node_modules/
+dist/
+.cache/
+.wrangler/
+.vercel/
+.netlify/
+
+# Logs
+*.log
+npm-debug.log*
