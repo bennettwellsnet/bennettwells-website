@@ -1,16 +1,12 @@
-# Starship Progress Monitor is served as static files at /starship/
-
-# Block sensitive / non-public paths (defense in depth; also remove from deploys)
-# Note: if a static asset still exists at these paths, use a Cloudflare WAF rule too.
+# Block sensitive paths (dashboard WAF rule is the hard block for existing assets)
 /.git /404.html 404
 /.git/* /404.html 404
 /.DS_Store /404.html 404
 /.env /404.html 404
 /.env.local /404.html 404
-/.env.production /404.html 404
 /.claude /404.html 404
 /.claude/* /404.html 404
 
 # Legacy app paths
-/alaskatrip/*  /  302
-/alaskatrip    /  302
+/alaskatrip/* / 302
+/alaskatrip / 302
