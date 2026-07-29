@@ -1,12 +1,4 @@
-# Block sensitive paths (dashboard WAF rule is the hard block for existing assets)
-/.git /404.html 404
-/.git/* /404.html 404
-/.DS_Store /404.html 404
-/.env /404.html 404
-/.env.local /404.html 404
-/.claude /404.html 404
-/.claude/* /404.html 404
+# Starship Progress Monitor is served as static files at /starship/
 
-# Legacy app paths
-/alaskatrip/* / 302
-/alaskatrip / 302
+/alaskatrip/*  /  302
+/alaskatrip    /  302
