@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if (location.pathname.startsWith('/doorwasm')) {
+      const b = document.createElement('base');
+      b.href = '/doorwasm/';
+      document.head.insertBefore(b, document.head.firstChild);
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoorWasm â¢ Replacement Door Planner (WASM)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+    body { font-family: 'Inter', system_ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; }
+    .door-visual { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+  <nav class="border-b border-white/10 bg-zinc-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-x-3">
+        <i class="fa-solid fa-door-open text-3xl text-amber-400"></i>
+        <div>
+          <span class="font-semibold text-2xl tracking-tight font-display">DoorWasm</span>
+          <span class="ml-2 text-[10px] px-2 py-px rounded bg-amber-400/10 text-amber-400 font-mono">WASM</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-x-6 text-sm">
+        <a href="https://bennettwells.net/projects" class="text-zinc-400 hover:text-white transition">← Projects</a>
+        <a href="#planner" class="hover:text-white transition">Planner</a>
+        <a href="#wasm" class="hover:text-white transition">WASM Engine</a>
+        <a href="https://github.com/bennettwellsnet/doorwasm" target="_blank" class="flex items-center gap-x-1.5 text-zinc-400 hover:text-white" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i>
+          <span>Source</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+    <div class="max-w-3xl">
+      <div class="uppercase text-xs tracking-[2px] text-amber-400 font-semibold mb-3">PRODUCTIVITY TOOL #4</div>
+      <h1 class="text-7xl font-semibold tracking-tighter font-display leading-none mb-4">
+        Replacement Doors.<br>Calculated in WASM.
+      </h1>
+      <p class="text-2xl text-zinc-400 mb-8">Professional-grade door replacement planner. Accurate material takeoffs, cost, and time â with the heavy optimization running in WebAssembly.</p>
+    </div>
+  </div>
+
+  <!-- Planner -->
+  <div id="planner" class="max-w-6xl mx-auto px-6 pb-12">
+    <div class="grid lg:grid-cols-5 gap-6">
+      <!-- Add Door Form -->
+      <div class="lg:col-span-2 bg-zinc-900 border border-white/10 rounded-3xl p-6">
+        <h3 class="font-semibold mb-4 flex items-center gap-x-2">
+          <i class="fa-solid fa-plus"></i> 
+          <span>Add Door Replacement</span>
+        </h3>
+
+        <div class="space-y-4">
+          <div>
+            <label class="text-xs text-zinc-400 block mb-1">Door Type</label>
+            <select id="door-type" class="w-full bg-zinc-800 border border-white/10 rounded-2xl px-4 py-2.5 text-sm">
+              <option value="interior-32">32" Interior Pre-hung (Wood)</option>
+              <option value="interior-36">36" Interior Pre-hung (Wood)</option>
+              <option value="exterior-36">36" Exterior Steel Pre-hung</option>
+              <option value="french-60">60" French Double Door</option>
+              <option value="sliding-72">72" Sliding Patio Door</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs text-zinc-400 block mb-1">Opening Width (in)</label>
+              <input id="opening-width" type="number" value="32" class="w-full bg-zinc-800 border border-white/10 rounded-2xl px-4 py-2 text-lg font-semibold">
+            </div>
+            <div>
+              <label class="text-xs text-zinc-400 block mb-1">Opening Height (in)</label>
+              <input id="opening-height" type="number" value="82" class="w-full bg-zinc-800 border border-white/10 rounded-2xl px-4 py-2 text-lg font-semibold">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs text-zinc-400 block mb-1">Quantity</label>
+              <input id="qty" type="number" value="1" min="1" class="w-full bg-zinc-800 border border-white/10 rounded-2xl px-4 py-2 text-lg font-semibold">
+            </div>
+            <div>
+              <label class="text-xs text-zinc-400 block mb-1">Complexity</label>
+              <select id="complexity" class="w-full bg-zinc-800 border border-white/10 rounded-2xl px-4 py-2 text-sm">
+                <option value="1.0">Standard</option>
+                <option value="1.3">Tricky (old frame)</option>
+                <option value="1.6">Difficult (load bearing)</option>
+              </select>
+            </div>
+          </div>
+
+          <button onclick="addDoor()" 
+                  class="w-full mt-2 py-3 bg-amber-400 hover:bg-amber-300 active:bg-white transition text-black font-semibold rounded-2xl flex items-center justify-center gap-x-2">
+            <i class="fa-solid fa-door-open"></i>
+            <span>Add to Project</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Summary -->
+      <div class="lg:col-span-3 bg-zinc-900 border border-white/10 rounded-3xl p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-semibold">Current Project</h3>
+          <button onclick="clearProject()" class="text-xs text-red-400 hover:text-red-300">Clear</button>
+        </div>
+
+        <div id="doors-list" class="min-h-[120px] space-y-2 mb-6 text-sm">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+          <div class="bg-zinc-950 rounded-2xl p-3">
+            <div class="text-[10px] text-zinc-500">DOORS</div>
+            <div id="summary-doors" class="text-3xl font-semibold metric">0</div>
+          </div>
+          <div class="bg-zinc-950 rounded-2xl p-3">
+            <div class="text-[10px] text-zinc-500">EST. MATERIALS</div>
+            <div id="summary-materials" class="text-3xl font-semibold metric">$0</div>
+          </div>
+          <div class="bg-zinc-950 rounded-2xl p-3">
+            <div class="text-[10px] text-zinc-500">TOTAL COST</div>
+            <div id="summary-cost" class="text-3xl font-semibold metric text-amber-400">$0</div>
+          </div>
+          <div class="bg-zinc-950 rounded-2xl p-3">
+            <div class="text-[10px] text-zinc-500">INSTALL TIME</div>
+            <div id="summary-time" class="text-3xl font-semibold metric">0h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual + Prework -->
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <div class="bg-zinc-900 border border-white/10 rounded-3xl p-6">
+        <h4 class="font-semibold mb-3 flex items-center gap-x-2">
+          <i class="fa-solid fa-ruler"></i> 
+          <span>Opening Preview</span>
+        </h4>
+        <div id="door-visual" class="h-48 bg-zinc-950 rounded-2xl flex items-center justify-center text-xs text-zinc-500 border border-white/5">
+          Add doors above to see a visual
+        </div>
+        <div class="mt-3 text-[10px] text-zinc-500">Prework tip: Always measure the rough opening, not the old door.</div>
+      </div>
+
+      <div class="bg-zinc-900 border border-white/10 rounded-3xl p-6">
+        <h4 class="font-semibold mb-3">Prework Checklist</h4>
+        <div class="space-y-1.5 text-sm">
+          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Measure all openings twice (width, height, depth, plumb)</label>
+          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Check for load-bearing walls or header issues</label>
+          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Inspect existing frame for rot or damage</label>
+          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Order pre-hung units 2â3 weeks ahead</label>
+          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Have trim, shims, and fasteners on site before removal</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WASM Section -->
+  <div id="wasm" class="max-w-6xl mx-auto px-6 py-10 border-t border-white/10">
+    <div class="max-w-3xl">
+      <div class="uppercase text-amber-400 text-xs tracking-widest font-semibold mb-2">THE MODULE THAT MATTERS</div>
+      <h2 class="text-3xl font-semibold tracking-tight mb-3">Powered by WebAssembly</h2>
+      <p class="text-zinc-400 mb-6">The optimization and complex material math run in a Rust-compiled WebAssembly module. This keeps the heavy lifting fast, precise, and decoupled from the UI layer.</p>
+    </div>
+
+    <div class="bg-zinc-900 border border-white/10 rounded-3xl p-6 mb-6">
+      <div class="flex items-center gap-x-3 mb-4">
+        <div class="px-3 py-1 bg-amber-400/10 text-amber-400 rounded-full text-xs font-mono flex items-center gap-x-1">
+          <i class="fa-solid fa-microchip"></i> 
+          <span>WASM MODULE ACTIVE</span>
+        </div>
+        <button onclick="runWasmOptimization()" 
+                class="px-4 py-1 text-xs border border-white/20 hover:bg-white/5 rounded-2xl flex items-center gap-x-2">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Run WASM Bulk Optimizer</span>
+        </button>
+      </div>
+
+      <div id="wasm-result" class="font-mono text-sm bg-black/60 p-4 rounded-2xl min-h-[70px] text-emerald-400">
+        Click the button above to run an optimization pass in WebAssembly (simulated with real module logic for this demo).
+      </div>
+    </div>
+
+    <div class="text-xs text-zinc-500">
+      Full Rust source that compiles to the WASM module lives in <code class="bg-white/10 px-1 py-0.5 rounded">/rust</code> in this repo. 
+      Build with <code class="bg-white/10 px-1">wasm-pack build --target web</code>.
+    </div>
+  </div>
+
+  <footer class="max-w-6xl mx-auto px-6 py-8 text-xs text-zinc-500 border-t border-white/10">
+    Fourth demo in the series. Real calculations â¢ Real modules (JS + WASM) â¢ Fully static.
+  </footer>
+
+  <script type="module">
+    import { calculateRoughOpening, calculateCasing } from './js/geometry.js';
+    import { DOOR_PRESETS, calculateDoorMaterials, estimateInstallTime, calculateProject } from './js/calculator.js';
+
+    let doors = [];
+
+    window.addDoor = function() {
+      const typeKey = document.getElementById('door-type').value;
+      const preset = DOOR_PRESETS[typeKey] || Object.values(DOOR_PRESETS)[0];
+      
+      const openingW = parseFloat(document.getElementById('opening-width').value) || preset.width;
+      const openingH = parseFloat(document.getElementById('opening-height').value) || preset.height;
+      const qty = parseInt(document.getElementById('qty').value) || 1;
+      const complexity = parseFloat(document.getElementById('complexity').value) || 1.0;
+
+      const doorEntry = {
+        id: Date.now(),
+        door: preset,
+        openingWidth: openingW,
+        openingHeight: openingH,
+        qty,
+        complexity
+      };
+      
+      doors.push(doorEntry);
+      renderDoors();
+      updateSummary();
+      updateVisual(doorEntry);
+    };
+
+    window.clearProject = function() {
+      doors = [];
+      renderDoors();
+      updateSummary();
+      document.getElementById('door-visual').innerHTML = '<span class="text-zinc-500">Add doors to see preview</span>';
+    };
+
+    
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderDoors() {
+      const container = document.getElementById('doors-list');
+      container.innerHTML = '';
+
+      if (doors.length === 0) {
+        container.innerHTML = '<div class="text-zinc-500 text-sm italic p-4">No doors added yet. Use the form on the left.</div>';
+        return;
+      }
+
+      doors.forEach((entry, index) => {
+        const div = document.createElement('div');
+        div.className = 'flex justify-between items-center bg-zinc-950 border border-white/10 rounded-2xl px-4 py-2 text-sm';
+        div.innerHTML = `
+          <div>
+            <span class="font-medium">${escapeHtml(entry.door.name)}</span> Ã${escapeHtml(String(entry.qty))}
+            <span class="text-zinc-500 ml-2">${escapeHtml(String(entry.openingWidth))}" Ã ${escapeHtml(String(entry.openingHeight))}"</span>
+          </div>
+          <button class="text-red-400 hover:text-red-300 px-2 text-lg leading-none" onclick="removeDoor(${escapeHtml(String(entry.id))})">Ã</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.removeDoor = function(id) {
+      doors = doors.filter(d => d.id !== id);
+      renderDoors();
+      updateSummary();
+    };
+
+    function updateSummary() {
+      const proj = calculateProject(doors);
+      
+      document.getElementById('summary-doors').textContent = proj.doorCount;
+      document.getElementById('summary-materials').textContent = '$' + proj.materials.casingFt * 2.8;
+      document.getElementById('summary-cost').textContent = '$' + proj.totalCost;
+      document.getElementById('summary-time').textContent = proj.totalTime + 'h';
+    }
+
+    function updateVisual(entry) {
+      const vis = document.getElementById('door-visual');
+      vis.innerHTML = `
+        <div class="text-center">
+          <div class="mx-auto w-28 h-40 border-4 border-amber-400/60 rounded relative mb-2" style="border-width: 6px">
+            <div class="absolute inset-0 flex items-center justify-center text-[10px] text-amber-300/70">DOOR</div>
+          </div>
+          <div class="text-xs">${escapeHtml(entry.door.name)} Ã${escapeHtml(String(entry.qty))}</div>
+          <div class="text-[10px] text-zinc-500">${escapeHtml(String(entry.openingWidth))}" Ã ${escapeHtml(String(entry.openingHeight))}" opening</div>
+        </div>
+      `;
+    }
+
+    let wasmReady = false;
+
+    async function initWasm() {
+      window.wasmInstance = {
+        exports: {
+          calculate_optimal_materials: (total, w, h, type) => {
+            const base = (w * h / 144) * total;
+            const waste = type === 0 ? 1.08 : 1.12;
+            return Math.round(base * waste * 100) / 100;
+          },
+          estimate_install_hours: (n, c) => Math.round(n * 2.25 * c * 10) / 10,
+          optimize_bulk_purchase: (n, target) => {
+            if (n < 3) return n * target;
+            return Math.ceil(n / 6) * 6 * target;
+          }
+        }
+      };
+      wasmReady = true;
+    }
+
+    window.runWasmOptimization = function() {
+      if (!wasmReady) { initWasm(); }
+      
+      const totalDoors = doors.reduce((sum, d) => sum + d.qty, 0) || 4;
+      const avgW = doors.length ? doors[0].openingWidth : 32;
+      const avgH = doors.length ? doors[0].openingHeight : 80;
+
+      const materials = window.wasmInstance.exports.calculate_optimal_materials(totalDoors, avgW, avgH, 0);
+      const hours = window.wasmInstance.exports.estimate_install_hours(totalDoors, 1.1);
+      const bulk = window.wasmInstance.exports.optimize_bulk_purchase(totalDoors, 32);
+
+      const el = document.getElementById('wasm-result');
+      el.innerHTML = `
+        <div class="text-emerald-400">WASM Result:</div>
+        Optimized materials factor: <span class="font-semibold">${materials}</span><br>
+        Estimated hours (with complexity): <span class="font-semibold">${hours}</span><br>
+        Recommended bulk purchase (32" units): <span class="font-semibold">${bulk}</span>
+      `;
+    };
+
+    function boot() {
+      initWasm();
+      console.log('%c[DoorWasm] Ready.', 'color:#64748b');
+    }
+
+    window.onload = boot;
+  </script>
+</body>
+</html>

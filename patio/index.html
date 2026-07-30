@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build a Paver Patio â¢ Solid Foundation Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    
+    :root {
+      --stone: #78716c;
+      --earth: #57534e;
+    }
+    
+    body { 
+      font-family: 'Inter', system_ui, sans-serif; 
+    }
+    .font-display { 
+      font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; 
+      font-weight: 600; 
+    }
+    
+    .paver-bg {
+      background: 
+        linear-gradient(145deg, #f5f0e6 0%, #e7d9c8 100%);
+    }
+    
+    .section-header {
+      position: relative;
+    }
+    .section-header:after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(to right, #57534e, #78716c);
+      border-radius: 3px;
+    }
+    
+    .foundation-layer {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .step-card {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    }
+    .step-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+    
+    .tip {
+      background: #fefce8;
+      border-left: 4px solid #ca8a04;
+    }
+    
+    .warning {
+      background: #fef2f2;
+      border-left: 4px solid #b91c1c;
+    }
+    
+    .stat {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .layer-visual {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #d1d5db;
+    }
+    
+    .nav-active {
+      color: #57534e;
+      font-weight: 600;
+    }
+    
+    .check-item {
+      transition: all 0.1s ease;
+    }
+    
+    .metric {
+      font-feature-settings: "tnum";
+    }
+  </style>
+</head>
+<body class="bg-[#f5f0e6] text-[#3f3a36]">
+  <!-- Nav -->
+  <nav class="bg-white border-b border-stone-200 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-x-3">
+          <div class="flex items-center gap-x-2">
+            <i class="fa-solid fa-hammer text-[#57534e] text-2xl"></i>
+            <span class="font-semibold text-xl tracking-tight font-display">Paver Patio Guide</span>
+          </div>
+          <div class="hidden sm:block text-xs px-2.5 py-1 rounded bg-stone-100 text-stone-600 border border-stone-200 font-medium">DIY SERIES</div>
+        </div>
+        <div class="flex items-center gap-x-2 text-sm">
+          <a href="https://bennettwells.net/projects" class="px-3 py-1.5 rounded-xl hover:bg-stone-100 transition text-stone-700">← Projects</a>
+          <a href="#prework" class="px-3 py-1.5 rounded-xl hover:bg-stone-100 transition text-stone-700">Foundation Prework</a>
+          <a href="#calculator" class="px-3 py-1.5 rounded-xl hover:bg-stone-100 transition text-stone-700">Calculator</a>
+          <a href="https://github.com/bennettwellsnet/patio" target="_blank" class="flex items-center gap-x-1.5 px-3 py-1.5 rounded-xl hover:bg-stone-100 transition text-stone-600" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span class="hidden sm:inline">GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full bg-white border border-stone-200 text-xs font-medium mb-4">
+        <div class="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
+        <span class="text-stone-600">FOCUS: FOUNDATION PREWORK</span>
+      </div>
+      
+      <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter font-display leading-none mb-4 text-[#3f3a36]">
+        Build a Paver Patio<br>That Lasts Decades
+      </h1>
+      <p class="text-2xl text-stone-600 mb-8">The secret isn't the pavers you see â it's the foundation you don't.</p>
+      
+      <div class="flex flex-wrap gap-3">
+        <a href="#prework" class="inline-flex items-center gap-x-2 px-6 py-3 bg-[#57534e] hover:bg-[#3f3a36] transition text-white font-semibold rounded-2xl">
+          <span>Start with the Foundation</span>
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="#calculator" class="inline-flex items-center gap-x-2 px-6 py-3 border border-stone-300 hover:bg-white transition font-semibold rounded-2xl">
+          Try the Materials Calculator
+        </a>
+      </div>
+      
+      <div class="mt-6 text-xs text-stone-500 flex items-center gap-x-4">
+        <div class="flex items-center gap-x-1.5">
+          <i class="fa-solid fa-check text-emerald-700"></i>
+          <span>No experience required</span>
+        </div>
+        <div class="flex items-center gap-x-1.5">
+          <i class="fa-solid fa-check text-emerald-700"></i>
+          <span>Realistic timelines &amp; costs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Foundation Matters -->
+  <div class="bg-white border-y border-stone-200 py-10">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-semibold tracking-tight font-display mb-3">Why 80% of Your Effort Should Go Underground</h2>
+          <p class="text-stone-600 mb-6">A beautiful paver patio can fail in one season if the base is wrong. Settling, tilting, weeds, cracking, and poor drainage all start with inadequate pre-work.</p>
+          
+          <div class="space-y-3 text-sm">
+            <div class="flex gap-3">
+              <div class="w-5 h-5 rounded-full bg-red-100 text-red-700 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-times text-xs"></i></div>
+              <div><span class="font-medium">Poor compaction</span> â pavers shift and create trip hazards within 1â2 years</div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-5 h-5 rounded-full bg-red-100 text-red-700 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-times text-xs"></i></div>
+              <div><span class="font-medium">No slope or wrong base depth</span> â water pools, freezes, heaves the entire surface</div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-5 h-5 rounded-full bg-red-100 text-red-700 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-times text-xs"></i></div>
+              <div><span class="font-medium">Skipping geotextile or edge restraints</span> â gravel migrates, weeds grow through joints</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-[#f5f0e6] border border-stone-200 rounded-3xl p-6 text-sm">
+          <div class="font-semibold mb-3 flex items-center gap-x-2">
+            <i class="fa-solid fa-lightbulb text-amber-600"></i>
+            <span>The 80/20 Rule for Patios</span>
+          </div>
+          <p class="text-stone-600">Spend the majority of your time and money on excavation, gravel base, and compaction. The actual laying of pavers is the "fun" part that goes quickly once the foundation is perfect.</p>
+          <div class="mt-4 pt-4 border-t border-stone-200 text-xs text-stone-500">
+            Professional installers often spend 3â4 days on prep for a 12Ã16 ft patio and only 1 day laying the pavers.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Critical Prework Section -->
+  <div id="prework" class="max-w-5xl mx-auto px-6 pt-12 pb-8">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <div class="uppercase tracking-[1.5px] text-xs font-semibold text-stone-500 mb-1">THE MOST IMPORTANT PART</div>
+        <h2 class="text-4xl font-semibold tracking-tighter font-display">Foundation Pre-Work</h2>
+      </div>
+      <div class="text-xs px-3 py-1 bg-amber-100 text-amber-800 rounded-full font-medium hidden md:block">Do this right or do it twice</div>
+    </div>
+    
+    <div class="grid gap-4">
+      <!-- Step 1 -->
+      <div class="step-card bg-white border border-stone-200 rounded-3xl p-6">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-2xl bg-stone-800 text-white flex items-center justify-center font-semibold text-sm">1</div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-xl mb-1">Plan, Layout &amp; Check Utilities</h3>
+            <div class="text-stone-600 mb-3">Mark the exact area with string lines and stakes. Decide on final height relative to doors, lawn, and house foundation.</div>
+            
+            <div class="tip text-xs p-3 rounded-2xl mb-3">
+              <strong>Pro tip:</strong> Call 811 (or your local equivalent) at least 2â3 business days before you dig. Mark the lines with spray paint.
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 text-xs">
+              <div><span class="font-medium">Recommended slope:</span> 1/4 inch per foot away from structures</div>
+              <div><span class="font-medium">Typical patio height:</span> 1â2" above surrounding grade</div>
+              <div><span class="font-medium">Allow extra room:</span> 6â12 inches beyond finished patio for working room</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="step-card bg-white border border-stone-200 rounded-3xl p-6">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-2xl bg-stone-800 text-white flex items-center justify-center font-semibold text-sm">2</div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-xl mb-1">Excavate to the Right Depth</h3>
+            <div class="text-stone-600 mb-3">Remove all sod, topsoil, and soft material. The total depth of your excavation = paver thickness + sand bedding (usually 1") + compacted gravel base (4â8" for patios, more for heavy use or poor soil).</div>
+            
+            <div class="warning p-3 rounded-2xl text-xs mb-3">
+              <strong>Warning:</strong> In freeze-thaw climates, many experts recommend a minimum 10â12" total base depth to prevent frost heave.
+            </div>
+            
+            <div class="text-xs flex gap-2 flex-wrap">
+              <div class="px-2.5 py-1 bg-stone-100 rounded">Typical residential patio: 7â9" total excavation</div>
+              <div class="px-2.5 py-1 bg-stone-100 rounded">Driveway or high-traffic: 10â14"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="step-card bg-white border border-stone-200 rounded-3xl p-6">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-2xl bg-stone-800 text-white flex items-center justify-center font-semibold text-sm">3</div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-xl mb-1">Install Geotextile Fabric (Highly Recommended)</h3>
+            <div class="text-stone-600">Lay a high-quality geotextile fabric (weed barrier fabric rated for landscaping/road base) directly on the excavated soil before adding any gravel. This prevents gravel from mixing into the soil over time and stops weeds from growing up through the base.</div>
+            <div class="mt-2 text-xs text-emerald-700 font-medium">This is one of the cheapest insurance policies you can buy for long-term stability.</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 4 - The Big One -->
+      <div class="step-card bg-white border-2 border-[#57534e] rounded-3xl p-6 relative">
+        <div class="absolute -top-2 right-6 bg-[#57534e] text-white text-[10px] px-3 py-0.5 rounded-full font-medium tracking-wider">MOST IMPORTANT</div>
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-2xl bg-[#57534e] text-white flex items-center justify-center font-semibold text-sm">4</div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-xl mb-1">Build &amp; Compact the Gravel Base in Layers</h3>
+            <div class="text-stone-600 mb-4">This is where most DIY patios fail. Do not dump all the gravel at once.</div>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="font-medium text-sm mb-1">Best practice:</div>
+                <ul class="text-sm space-y-1 text-stone-600">
+                  <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-700 mt-1"></i> Use 3/4" minus crushed stone or road base (angular, not round river rock)</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-700 mt-1"></i> Install in 2â3 inch lifts (layers)</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-700 mt-1"></i> Compact each lift thoroughly with a plate compactor (rent one â itâs worth every penny)</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-700 mt-1"></i> Dampen the gravel slightly before compacting for better results</li>
+                </ul>
+              </div>
+              <div class="text-xs bg-amber-50 border border-amber-200 p-3 rounded-2xl">
+                <strong>Pro move:</strong> Make 4â6 passes with the plate compactor on each layer. If the compactor "jumps" around, the layer is not dense enough yet.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 5 -->
+      <div class="step-card bg-white border border-stone-200 rounded-3xl p-6">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-2xl bg-stone-800 text-white flex items-center justify-center font-semibold text-sm">5</div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-xl mb-1">Screed the Sand Bedding Layer</h3>
+            <div class="text-stone-600 mb-3">After the gravel is perfectly compacted and level, add about 1 inch of coarse concrete sand (not play sand or fine mason sand). Use two parallel pipes or 1Ã2 boards as screed guides to create a perfectly smooth, sloped surface for the pavers.</div>
+            <div class="text-xs">Remove the pipes as you work and fill the voids with sand. Never walk on the finished sand bed.</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 6 -->
+      <div class="step-card bg-white border border-stone-200 rounded-3xl p-6">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-2xl bg-stone-800 text-white flex items-center justify-center font-semibold text-sm">6</div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-xl mb-1">Install Edge Restraints</h3>
+            <div class="text-stone-600">Before laying a single paver, secure the perimeter with plastic or aluminum edging spiked firmly into the compacted base. This is non-negotiable. Without edge restraints, the pavers will slowly "creep" outward over the years and the pattern will fall apart.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Foundation Diagram -->
+  <div class="max-w-5xl mx-auto px-6 pb-12">
+    <h3 class="font-semibold text-lg mb-3 px-1">Proper Foundation Cross-Section (Typical Residential Patio)</h3>
+    
+    <div id="layer-diagram" class="bg-white border border-stone-200 rounded-3xl p-6">
+      <div class="max-w-md mx-auto">
+        <!-- Dynamic layers -->
+        <div class="space-y-0.5 text-xs font-medium" style="font-size: 13px;">
+          <div class="foundation-layer bg-[#1e2937] text-white px-4 py-2.5 rounded-t-2xl flex justify-between items-center" style="height: 42px;">
+            <div>Pavers (2â3")</div>
+            <div class="font-mono text-[10px] opacity-70">FINISHED SURFACE</div>
+          </div>
+          <div class="foundation-layer bg-[#e2d9c7] text-[#3f3a36] px-4 py-2.5 flex justify-between items-center" style="height: 38px;">
+            <div>Coarse Sand Bedding (1")</div>
+          </div>
+          <div class="foundation-layer bg-[#a8a29e] text-white px-4 py-2.5 flex justify-between items-center font-medium" style="height: 68px;">
+            <div>Compacted Gravel Base (4â8")</div>
+            <div class="text-[10px] opacity-80">MOST CRITICAL LAYER</div>
+          </div>
+          <div class="foundation-layer bg-[#854d0e] text-white px-4 py-1.5 flex justify-between items-center text-xs" style="height: 28px;">
+            <div>Geotextile Fabric</div>
+          </div>
+          <div class="foundation-layer bg-[#4b3f2e] text-[#e7d9c8] px-4 py-2 rounded-b-2xl flex justify-between items-center" style="height: 36px;">
+            <div>Compacted Subgrade (native soil)</div>
+          </div>
+        </div>
+        
+        <div class="mt-3 text-[10px] text-stone-500 text-center">Total excavation depth is usually 7â12 inches for a standard patio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Calculator -->
+  <div id="calculator" class="max-w-5xl mx-auto px-6 pb-12">
+    <div class="bg-white border border-stone-200 rounded-3xl p-8">
+      <div class="flex items-center gap-x-3 mb-5">
+        <i class="fa-solid fa-calculator text-[#57534e] text-xl"></i>
+        <h2 class="font-semibold text-2xl tracking-tight">Foundation Materials Calculator</h2>
+      </div>
+      <p class="text-stone-600 mb-6">Enter your patio dimensions and desired base depths. Results include a 15% waste/compaction factor.</p>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Inputs -->
+        <div class="space-y-5">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-stone-500 mb-1">LENGTH (feet)</label>
+              <input id="length" type="number" value="12" step="0.5" class="w-full border border-stone-300 rounded-2xl px-4 py-2.5 text-lg font-semibold focus:outline-none focus:border-stone-400">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-stone-500 mb-1">WIDTH (feet)</label>
+              <input id="width" type="number" value="16" step="0.5" class="w-full border border-stone-300 rounded-2xl px-4 py-2.5 text-lg font-semibold focus:outline-none focus:border-stone-400">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-medium text-stone-500 mb-1">GRAVEL BASE DEPTH (inches) â 4â8" typical</label>
+            <input id="gravel-depth" type="number" value="6" step="0.5" class="w-full border border-stone-300 rounded-2xl px-4 py-2.5 text-lg font-semibold focus:outline-none focus:border-stone-400">
+          </div>
+          
+          <div>
+            <label class="block text-xs font-medium text-stone-500 mb-1">SAND BEDDING DEPTH (inches) â usually 1"</label>
+            <input id="sand-depth" type="number" value="1" step="0.25" class="w-full border border-stone-300 rounded-2xl px-4 py-2.5 text-lg font-semibold focus:outline-none focus:border-stone-400">
+          </div>
+          
+          <div class="pt-2">
+            <button onclick="calculateMaterials()" class="w-full bg-[#57534e] hover:bg-[#3f3a36] transition text-white font-semibold py-3 rounded-2xl">Calculate Materials</button>
+          </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="bg-[#f5f0e6] rounded-3xl p-6">
+          <div class="text-xs uppercase tracking-widest font-medium text-stone-500 mb-3">ESTIMATED QUANTITIES</div>
+          
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between items-baseline">
+              <div class="text-stone-600">Patio Area</div>
+              <div class="font-semibold text-lg tabular-nums" id="area">192 <span class="text-xs font-normal">sq ft</span></div>
+            </div>
+            
+            <div class="flex justify-between items-baseline border-t border-stone-200 pt-3">
+              <div class="text-stone-600">Excavation Volume</div>
+              <div class="font-semibold text-lg tabular-nums" id="excavation">6.4 <span class="text-xs font-normal">cu yd</span></div>
+            </div>
+            
+            <div class="flex justify-between items-baseline">
+              <div class="text-stone-600">Gravel Needed</div>
+              <div>
+                <span class="font-semibold text-lg tabular-nums" id="gravel-yd">3.4</span> 
+                <span class="text-xs">cu yd</span> 
+                <span class="text-stone-500">â</span> 
+                <span class="font-semibold tabular-nums" id="gravel-tons">4.8</span> 
+                <span class="text-xs">tons</span>
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-baseline">
+              <div class="text-stone-600">Sand Needed</div>
+              <div>
+                <span class="font-semibold text-lg tabular-nums" id="sand-yd">0.6</span> 
+                <span class="text-xs">cu yd</span>
+                <span class="ml-1 text-stone-500">or ~25 Ã 50lb bags</span>
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-baseline border-t border-stone-200 pt-3">
+              <div class="text-stone-600">Pavers (12Ã12 example + 10% waste)</div>
+              <div class="font-semibold text-lg tabular-nums" id="pavers">211 <span class="text-xs font-normal">pcs</span></div>
+            </div>
+          </div>
+          
+          <div class="text-[10px] text-stone-500 mt-5 leading-snug">These are estimates. Always buy 10â15% extra. Actual gravel weight varies by stone type and moisture. Rent a plate compactor for best results.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="max-w-5xl mx-auto px-6 pb-14">
+    <h3 class="font-semibold tracking-tight text-xl mb-3 px-1">Foundation Readiness Checklist</h3>
+    <div class="bg-white border border-stone-200 rounded-3xl p-6">
+      <div id="checklist" class="grid md:grid-cols-2 gap-x-8 gap-y-1 text-sm">
+        <!-- Populated by JS -->
+      </div>
+      <div class="mt-4 pt-4 border-t text-xs flex items-center gap-x-2">
+        <div class="flex-1 bg-stone-100 h-2 rounded overflow-hidden">
+          <div id="progress-bar" class="h-2 bg-emerald-700 w-0 transition-all"></div>
+        </div>
+        <div id="progress-text" class="font-mono text-xs w-10 text-right text-stone-600">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-stone-200 bg-white py-8 text-xs text-stone-500">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-center gap-y-1 md:justify-between">
+        <div>
+          This is an educational demo. Always follow local building codes and consult professionals for large or structural projects. 
+          Drainage and soil conditions vary by region.
+        </div>
+        <div class="mt-1 md:mt-0">
+          Demo project â¢ <a href="https://github.com/bennettwellsnet/patio" class="underline hover:text-stone-700" target="_blank" rel="noopener noreferrer">bennettwellsnet/patio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tailwind config (for Play CDN)
+    function initTailwind() {
+      if (window.tailwind) {
+        tailwind.config = {
+          theme: {
+            extend: {}
+          }
+        };
+      }
+    }
+
+    // Materials calculator
+    function calculateMaterials() {
+      const length = parseFloat(document.getElementById('length').value) || 12;
+      const width = parseFloat(document.getElementById('width').value) || 16;
+      const gravelInches = parseFloat(document.getElementById('gravel-depth').value) || 6;
+      const sandInches = parseFloat(document.getElementById('sand-depth').value) || 1;
+      
+      const area = length * width;
+      const totalDepthInches = gravelInches + sandInches;
+      
+      // Volumes with 15% extra
+      const excavationCuYd = (totalDepthInches / 12 * area / 27) * 1.15;
+      const gravelCuYd = (gravelInches / 12 * area / 27) * 1.15;
+      const sandCuYd = (sandInches / 12 * area / 27) * 1.15;
+      
+      // Rough tons for gravel (typical 3/4" crushed stone ~1.4 tons per cu yd)
+      const gravelTons = gravelCuYd * 1.4;
+      
+      // Pavers â example 12x12 (1 sq ft each) + 10% waste
+      const pavers = Math.ceil(area * 1.10);
+      
+      // Update UI
+      document.getElementById('area').innerHTML = `${area.toFixed(0)} <span class="text-xs font-normal">sq ft</span>`;
+      document.getElementById('excavation').innerHTML = `${excavationCuYd.toFixed(1)} <span class="text-xs font-normal">cu yd</span>`;
+      document.getElementById('gravel-yd').textContent = gravelCuYd.toFixed(1);
+      document.getElementById('gravel-tons').textContent = gravelTons.toFixed(1);
+      document.getElementById('sand-yd').textContent = sandCuYd.toFixed(1);
+      document.getElementById('pavers').innerHTML = `${pavers} <span class="text-xs font-normal">pcs</span>`;
+    }
+    
+    // Foundation checklist
+    const checklistItems = [
+      "Called 811 / located utilities",
+      "Marked exact layout with string + stakes",
+      "Confirmed minimum 1/4\" per foot slope away from house",
+      "Excavated to correct total depth for climate/use",
+      "Removed all organic material and soft soil",
+      "Installed geotextile fabric over native soil",
+      "Gravel installed in 2â3\" lifts",
+      "Each gravel lift properly compacted (multiple passes)",
+      "Final gravel base is level with correct slope",
+      "Edge restraints installed and spiked securely",
+      "1\" coarse sand bedding screeded smooth"
+    ];
+    
+    function initChecklist() {
+      const container = document.getElementById('checklist');
+      
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+      container.innerHTML = '';
+      
+      checklistItems.forEach((item, index) => {
+        const id = `check-${index}`;
+        const div = document.createElement('label');
+        div.className = `check-item flex items-start gap-x-2.5 py-1.5 cursor-pointer`;
+        div.innerHTML = `
+          <input type="checkbox" id="${id}" class="mt-1 w-4 h-4 accent-[#57534e]">
+          <span class="text-sm leading-snug">${item}</span>
+        `;
+        
+        const checkbox = div.querySelector('input');
+        checkbox.addEventListener('change', updateProgress);
+        
+        container.appendChild(div);
+      });
+      
+      // Load saved state
+      const saved = localStorage.getItem('patioFoundationChecklist');
+      if (saved) {
+        const checked = JSON.parse(saved);
+        checked.forEach(i => {
+          const cb = document.getElementById(`check-${i}`);
+          if (cb) cb.checked = true;
+        });
+      }
+      
+      updateProgress();
+    }
+    
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checked = 0;
+      
+      const checkedIndexes = [];
+      checkboxes.forEach((cb, idx) => {
+        if (cb.checked) {
+          checked++;
+          checkedIndexes.push(idx);
+        }
+      });
+      
+      const pct = Math.round((checked / total) * 100);
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-text').textContent = pct + '%';
+      
+      // Save state
+      localStorage.setItem('patioFoundationChecklist', JSON.stringify(checkedIndexes));
+    }
+    
+    // Initialize everything
+    function init() {
+      initTailwind();
+      
+      // Initial calculator values
+      calculateMaterials();
+      
+      // Live calculator updates
+      ['length', 'width', 'gravel-depth', 'sand-depth'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', calculateMaterials);
+      });
+      
+      initChecklist();
+      
+      // Keyboard hint
+      console.log('%c[Paver Patio Guide] Foundation-focused demo ready. Try the calculator and checklist.', 'color:#78716c');
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>
