@@ -1,15 +1,120 @@
 /** Curated FSD streak stats & sample posts (illustrative demo data).
- *  Sources: Tesla FSD Safety Report, community X posts, public reporting (as of 2026-07-30).
- *  Not affiliated with Tesla. Always supervise FSD (Supervised).
+ *  Phase A: company vs community sources, dated labels, honest snapshot framing.
+ *  As of 2026-07-30. Not affiliated with Tesla. Always supervise FSD (Supervised).
  */
+
+/** Meta for the whole data pack */
+export const snapshotMeta = {
+  asOf: '2026-07-30',
+  asOfLabel: 'July 30, 2026',
+  kind: 'Static snapshot',
+  honesty:
+    'This is a curated demo snapshot — not a live X API feed and not an official Tesla product. Company figures come from Tesla’s public FSD Safety Report; streak miles are owner-reported and hard to independently audit.',
+  caveatsTitle: 'How to read these numbers',
+  caveats: [
+    'Tesla safety rates are company-published; methodology and independent auditability are debated in public reporting.',
+    'Community streak miles are self- or peer-reported. Definitions of “intervention” vary (brake, cancel, steering, parking takeovers).',
+    'Long influencer streaks are not typical daily-driver outcomes. Parking lots and construction remain common takeover moments.',
+    'FSD (Supervised) always requires an attentive driver ready to intervene.',
+  ],
+};
+
+/** Tesla / company-published framing */
+export const companyStats = [
+  {
+    id: 'fleet',
+    label: 'Cumulative FSD miles',
+    value: '12.8B+',
+    detail: 'Miles driven with FSD (Supervised) engaged (Tesla public safety page scale).',
+    source: 'Tesla FSD Safety Report',
+    sourceUrl: 'https://www.tesla.com/fsd/safety',
+    asOf: '2026-07',
+    caveat: 'Fleet total grows continuously; treat as order-of-magnitude, not a live counter.',
+  },
+  {
+    id: 'major',
+    label: 'Miles / major collision',
+    value: '~5.3M',
+    detail: 'Company framing for FSD vs ~660k miles U.S. average between major collisions.',
+    source: 'Tesla FSD Safety Report',
+    sourceUrl: 'https://www.tesla.com/fsd/safety',
+    asOf: '2026-07',
+    caveat: 'Tesla-defined collision windows and baselines; external researchers have criticized comparability.',
+  },
+  {
+    id: 'multiplier',
+    label: 'Fewer major collisions',
+    value: '~7–8×',
+    detail: 'Approximate ratio of Tesla’s published FSD major-collision rate vs U.S. average.',
+    source: 'Tesla FSD Safety Report',
+    sourceUrl: 'https://www.tesla.com/fsd/safety',
+    asOf: '2026-07',
+    caveat: 'Headline multiplier depends on methodology. Not a guarantee for any single driver or trip.',
+  },
+  {
+    id: 'software',
+    label: 'Streak feature (software)',
+    value: 'v14.3+',
+    detail: 'Intervention-free streak counter across drives; milestone celebrations (250 / 500 / 1k / 5k+).',
+    source: 'Public software notes / owner reports',
+    sourceUrl: 'https://www.tesla.com/fsd/safety',
+    asOf: '2026-06–07',
+    caveat: 'UI and milestone behavior vary by build and region. Always supervised.',
+  },
+];
+
+/** Owner / community-reported framing */
+export const communityStats = [
+  {
+    id: 'longest',
+    label: 'Longest reported streak',
+    value: '20,000+ mi',
+    detail: 'Community-reported zero-intervention streak miles under FSD (Supervised).',
+    source: 'Owner / community reporting (e.g. long-run streak posts)',
+    sourceUrl: null,
+    asOf: '2026-07',
+    caveat: 'Not Tesla-certified. “Intervention” definitions differ; not typical for most drivers.',
+  },
+  {
+    id: 'heavy',
+    label: 'Heavy FSD users',
+    value: '95%+ auto',
+    detail: 'Pattern described by long-streak owners: most daily miles on FSD when conditions allow.',
+    source: 'Community anecdotes',
+    sourceUrl: null,
+    asOf: '2026-07',
+    caveat: 'Selection bias — people who post long streaks are not a random sample.',
+  },
+  {
+    id: 'killers',
+    label: 'Common streak breakers',
+    value: 'Parking + work zones',
+    detail: 'Owners often take over in lots, garages, Superchargers, construction, and tight nav edges.',
+    source: 'Community themes on X',
+    sourceUrl: null,
+    asOf: '2026-07',
+    caveat: 'Qualitative, not a fleet telemetry export.',
+  },
+  {
+    id: 'mindset',
+    label: 'Community consensus',
+    value: 'Safety > streak',
+    detail: 'Streak is a metric, not a scoreboard — hesitate to intervene and you are using it wrong.',
+    source: 'Repeated owner guidance',
+    sourceUrl: null,
+    asOf: '2026-07',
+    caveat: 'Healthy norm — still not a substitute for your own judgment behind the wheel.',
+  },
+];
+
+/** @deprecated keep for any old imports */
 export const fsdStats = {
-  longestStreak: '20,000+ miles (zero interventions, community-reported)',
-  avgAutonomous: '95%+ of miles on FSD (Supervised) among heavy users',
-  safetyMultiplier: '~7–8× fewer major collisions vs U.S. average (Tesla FSD Safety Report)',
-  realWorldMiles: '~5.3M miles between major collisions on FSD vs ~660k U.S. average',
-  fleetMiles: '12.8B+ cumulative FSD (Supervised) miles published on Tesla’s safety page',
-  streakNote:
-    'FSD v14.3+ tracks intervention-free streak miles across drives and celebrates milestones (250 / 500 / 1k / 5k+).',
+  longestStreak: communityStats[0].value,
+  avgAutonomous: communityStats[1].value,
+  safetyMultiplier: companyStats[2].value,
+  realWorldMiles: companyStats[1].value,
+  fleetMiles: companyStats[0].value,
+  streakNote: companyStats[3].detail,
 };
 
 export const commonTips = [
@@ -28,7 +133,7 @@ export const examplePosts = [
     date: '2026-07',
     likes: 'high',
     highlight: '20k-mile milestone',
-    text: 'Community spotlight: a verified multi-thousand-mile intervention-free FSD streak crossed 20,000 consecutive miles — highways, cities, and Supercharger stops — still under active supervision.',
+    text: 'Community spotlight: a multi-thousand-mile intervention-free FSD streak crossed 20,000 consecutive miles in public reporting — still under active supervision.',
   },
   {
     user: '@WholeMarsBlog',
@@ -42,7 +147,7 @@ export const examplePosts = [
     date: '2026-06',
     likes: 'high',
     highlight: 'Fleet scale',
-    text: 'Tesla’s public FSD (Supervised) safety page now shows multi-billion cumulative miles. Per-mile claims keep improving on paper — independent rate audits still matter.',
+    text: 'Tesla’s public FSD (Supervised) safety page shows multi-billion cumulative miles. Per-mile claims keep improving on paper — independent rate audits still matter.',
   },
   {
     user: '@tesla_owners',

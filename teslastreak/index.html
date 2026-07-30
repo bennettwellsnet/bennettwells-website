@@ -11,7 +11,7 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tesla FSD streak stats, community tips, and a safety-first simulator. Demo using public reporting and X community themes.">
+  <meta name="description" content="Tesla FSD streak stats with clear company vs community sources, safety-first tips, and an illustrative simulator. Static demo snapshot — not a live X feed.">
   <title>TeslaStreak • FSD Streak Stats & Tips</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous">
@@ -23,6 +23,8 @@
     .metric { font-variant-numeric: tabular-nums; }
     .post-card { transition: transform .1s ease; }
     .post-card:hover { transform: translateY(-1px); }
+    details summary::-webkit-details-marker { display: none; }
+    details summary { list-style: none; }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
@@ -50,53 +52,62 @@
 
   <div class="max-w-6xl mx-auto px-6 pt-10 pb-6">
     <div class="max-w-3xl">
-      <div class="uppercase text-red-400 text-xs tracking-[2px] font-semibold mb-2">Community + public safety data • Updated July 2026</div>
+      <div class="uppercase text-red-400 text-xs tracking-[2px] font-semibold mb-2">Safety-first FSD streak demo</div>
       <h1 class="text-5xl sm:text-6xl font-semibold tracking-tighter font-display leading-none mb-4">
         Keep Your Tesla FSD Streak Alive
       </h1>
       <p class="text-xl sm:text-2xl text-zinc-400 mb-6">
-        Intervention-free streak stats, safety-first tips, and a simple simulator inspired by how owners talk about FSD (Supervised) on X.
+        Company-published safety framing vs owner-reported streak miles — plus tips and a simple simulator. Always supervise FSD (Supervised).
       </p>
       <div class="flex flex-wrap gap-3">
-        <a href="#simulator" class="px-6 py-3 bg-red-600 hover:bg-red-500 transition text-white rounded-2xl font-semibold">Try the Simulator</a>
-        <a href="#feed" class="px-6 py-3 border border-white/20 hover:bg-white/5 rounded-2xl font-semibold">Community themes</a>
+        <a href="#stats" class="px-6 py-3 bg-red-600 hover:bg-red-500 transition text-white rounded-2xl font-semibold">Compare sources</a>
+        <a href="#simulator" class="px-6 py-3 border border-white/20 hover:bg-white/5 rounded-2xl font-semibold">Try the Simulator</a>
       </div>
       <div id="hero-tip" class="mt-4 text-xs text-zinc-500 italic"></div>
-      <div id="data-as-of" class="mt-2 text-[10px] text-zinc-600"></div>
     </div>
+
+    <!-- Phase A: honesty / snapshot banner -->
+    <div id="snapshot-banner" class="mt-8 max-w-4xl bg-zinc-900/80 border border-amber-500/20 rounded-2xl p-4 sm:p-5" role="note"></div>
   </div>
 
-  <!-- Stats -->
+  <!-- Stats: company vs community -->
   <div id="stats" class="max-w-6xl mx-auto px-6 py-8 border-t border-white/10">
-    <h2 class="text-2xl font-semibold mb-2">FSD Streak & Safety Snapshot</h2>
-    <p id="stat-note" class="text-sm text-zinc-400 mb-6"></p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-zinc-900 border border-white/10 rounded-3xl p-5">
-        <div class="text-xs text-zinc-400">LONGEST REPORTED STREAK</div>
-        <div id="stat-longest" class="text-2xl sm:text-3xl font-semibold metric mt-1 text-emerald-400">—</div>
-        <div class="text-[10px] text-zinc-500 mt-1">Community-reported intervention-free miles (Supervised)</div>
-      </div>
-      <div class="bg-zinc-900 border border-white/10 rounded-3xl p-5">
-        <div class="text-xs text-zinc-400">HEAVY FSD USERS</div>
-        <div id="stat-auto" class="text-2xl sm:text-3xl font-semibold metric mt-1">—</div>
-        <div class="text-[10px] text-zinc-500 mt-1">Typical pattern among long-streak owners</div>
-      </div>
-      <div class="bg-zinc-900 border border-white/10 rounded-3xl p-5">
-        <div class="text-xs text-zinc-400">SAFETY EDGE (TESLA)</div>
-        <div id="stat-safer" class="text-2xl sm:text-3xl font-semibold metric mt-1 text-emerald-400">—</div>
-        <div class="text-[10px] text-zinc-500 mt-1">Company-published FSD Safety Report framing</div>
-      </div>
-      <div class="bg-zinc-900 border border-white/10 rounded-3xl p-5">
-        <div class="text-xs text-zinc-400">MILES / MAJOR COLLISION</div>
-        <div id="stat-miles" class="text-2xl sm:text-3xl font-semibold metric mt-1 text-emerald-400">—</div>
-        <div class="text-[10px] text-zinc-500 mt-1">Tesla FSD vs U.S. average (approx.)</div>
-      </div>
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Two kinds of numbers</h2>
+      <p class="text-sm text-zinc-400 max-w-2xl">
+        Tesla’s safety page and owner streak counters answer different questions. Mixing them without labels is how demos mislead — so we split them.
+        Snapshot date: <span data-snapshot-as-of class="text-zinc-300">—</span>.
+      </p>
     </div>
-    <div class="mt-4 bg-zinc-900/60 border border-white/10 rounded-2xl p-4 text-sm text-zinc-300">
-      <span class="text-zinc-500 text-xs uppercase tracking-wide">Fleet scale</span>
-      <div id="stat-fleet" class="mt-1 font-medium">—</div>
+
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-10">
+      <!-- Company -->
+      <section aria-labelledby="company-heading">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded bg-sky-500/15 text-sky-300 border border-sky-500/25">Company published</span>
+          <h3 id="company-heading" class="text-lg font-semibold text-zinc-100">Tesla FSD Safety Report</h3>
+        </div>
+        <p class="text-xs text-zinc-500 mb-4">
+          Fleet-scale rates from Tesla. Useful for company claims — not the same as any single driver’s streak counter.
+          <a href="https://www.tesla.com/fsd/safety" class="underline hover:text-zinc-300" target="_blank" rel="noopener noreferrer">tesla.com/fsd/safety</a>
+        </p>
+        <div id="company-stats" class="grid sm:grid-cols-2 gap-3"></div>
+      </section>
+
+      <!-- Community -->
+      <section aria-labelledby="community-heading">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">Owner reported</span>
+          <h3 id="community-heading" class="text-lg font-semibold text-zinc-100">Community streaks &amp; themes</h3>
+        </div>
+        <p class="text-xs text-zinc-500 mb-4">
+          How owners talk about intervention-free miles on X and elsewhere. Selection bias is real; treat as anecdotes + culture, not fleet telemetry.
+        </p>
+        <div id="community-stats" class="grid sm:grid-cols-2 gap-3"></div>
+      </section>
     </div>
-    <div class="mt-3 text-xs text-amber-400">⚠️ Gamification warning: streak counters can push risky hesitation. Intervene whenever you should — safety first.</div>
+
+    <div class="mt-6 text-xs text-amber-400">⚠️ Gamification warning: streak counters can push risky hesitation. Intervene whenever you should — safety first.</div>
   </div>
 
   <!-- Community Feed -->
@@ -104,7 +115,7 @@
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
       <div>
         <h2 class="text-2xl font-semibold">Community Themes from X</h2>
-        <p class="text-sm text-zinc-400">Illustrative posts styled after public FSD streak discussion (not a live X API feed)</p>
+        <p class="text-sm text-zinc-400">Illustrative composites styled after public discussion — <strong class="text-zinc-300 font-medium">not a live X API feed</strong></p>
       </div>
       <input id="feed-filter" placeholder="Filter posts..." class="bg-zinc-900 border border-white/10 rounded-2xl px-4 py-2 text-sm w-full sm:w-64">
     </div>
@@ -183,7 +194,7 @@
   </div>
 
   <div class="max-w-6xl mx-auto px-6 py-8 border-t border-white/10 text-xs text-zinc-400 space-y-2">
-    <p><strong>About this demo:</strong> Stats are approximate, drawn from Tesla’s public FSD Safety Report and public community reporting as of July 2026. Feed cards are illustrative composites (not a live X API). Always supervise FSD (Supervised). Not affiliated with Tesla.</p>
+    <p><strong>About this demo:</strong> Static snapshot as of <span data-snapshot-as-of>—</span>. Company stats → Tesla FSD Safety Report. Streak miles → owner/community reporting. Feed cards are illustrative composites (not live X). Always supervise FSD (Supervised). Not affiliated with Tesla.</p>
     <p>
       Repo: <a href="https://github.com/bennettwellsnet/teslastreak" class="underline" target="_blank" rel="noopener noreferrer">github.com/bennettwellsnet/teslastreak</a>
       • Live: <a href="https://bennettwells.net/teslastreak" class="underline">bennettwells.net/teslastreak</a>
