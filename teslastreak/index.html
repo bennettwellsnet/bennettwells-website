@@ -133,49 +133,79 @@
 
   <!-- Streak Simulator -->
   <div id="simulator" class="max-w-6xl mx-auto px-6 py-8 border-t border-white/10">
-    <h2 class="text-2xl font-semibold mb-4">Streak Simulator (Safety-First)</h2>
-    <p class="text-sm text-zinc-400 mb-6">Illustrative only — not a prediction of real FSD behavior. Models how “following more good habits” might extend a projected streak number.</p>
+    <h2 class="text-2xl font-semibold mb-2">Streak Simulator (Safety-First)</h2>
+    <p class="text-sm text-zinc-400 mb-6">Illustrative only — not a prediction of real FSD behavior. Pick a drive scenario; tips and base risk change with the context.</p>
 
     <div class="bg-zinc-900 border border-white/10 rounded-3xl p-6">
-      <form id="streak-sim" class="grid md:grid-cols-2 gap-6">
-        <div class="space-y-4">
-          <div>
-            <label class="block text-xs text-zinc-400 mb-1" for="current-miles">Current streak (miles)</label>
-            <input id="current-miles" type="number" min="0" value="1200" class="w-full bg-black border border-white/10 rounded-2xl px-4 py-2.5 text-lg font-semibold">
+      <form id="streak-sim" class="space-y-6">
+        <!-- Scenarios -->
+        <fieldset>
+          <legend class="text-xs text-zinc-400 mb-3 uppercase tracking-wider">Drive scenario</legend>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <label data-scenario-card="highway" class="cursor-pointer border border-white/10 rounded-2xl p-4 transition hover:bg-white/5">
+              <div class="flex items-center gap-2 mb-1">
+                <input type="radio" name="scenario" value="highway" checked class="accent-emerald-500">
+                <span class="font-semibold text-sm">Highway commute</span>
+              </div>
+              <p class="text-[11px] text-zinc-500 pl-6">Lower friction · longer legs</p>
+            </label>
+            <label data-scenario-card="city" class="cursor-pointer border border-white/10 rounded-2xl p-4 transition hover:bg-white/5">
+              <div class="flex items-center gap-2 mb-1">
+                <input type="radio" name="scenario" value="city" class="accent-emerald-500">
+                <span class="font-semibold text-sm">City + parking</span>
+              </div>
+              <p class="text-[11px] text-zinc-500 pl-6">Lots &amp; streets · higher takeovers</p>
+            </label>
+            <label data-scenario-card="construction" class="cursor-pointer border border-white/10 rounded-2xl p-4 transition hover:bg-white/5">
+              <div class="flex items-center gap-2 mb-1">
+                <input type="radio" name="scenario" value="construction" class="accent-emerald-500">
+                <span class="font-semibold text-sm">Construction / work zone</span>
+              </div>
+              <p class="text-[11px] text-zinc-500 pl-6">Cones &amp; temp lanes · manual often best</p>
+            </label>
           </div>
+          <p id="scenario-desc" class="mt-3 text-xs text-zinc-400"></p>
+        </fieldset>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs text-zinc-400 mb-1" for="current-miles">Current streak (miles)</label>
+              <input id="current-miles" type="number" min="0" value="1200" class="w-full bg-black border border-white/10 rounded-2xl px-4 py-2.5 text-lg font-semibold">
+            </div>
+            <div>
+              <label class="block text-xs text-zinc-400 mb-1" for="planned-miles">Planned miles this drive</label>
+              <input id="planned-miles" type="number" min="0" value="45" class="w-full bg-black border border-white/10 rounded-2xl px-4 py-2.5 text-lg font-semibold">
+            </div>
+          </div>
+
           <div>
-            <label class="block text-xs text-zinc-400 mb-1" for="planned-miles">Planned miles this drive</label>
-            <input id="planned-miles" type="number" min="0" value="180" class="w-full bg-black border border-white/10 rounded-2xl px-4 py-2.5 text-lg font-semibold">
+            <div class="text-xs text-zinc-400 mb-2">Habits for this scenario (weighted)</div>
+            <div class="space-y-2 text-sm" id="sim-tips"></div>
           </div>
         </div>
 
         <div>
-          <div class="text-xs text-zinc-400 mb-2">Apply community tips (check to simulate)</div>
-          <div class="space-y-2 text-sm" id="sim-tips">
-            <label class="flex items-center gap-2"><input type="checkbox" checked> Take over in parking lots early</label>
-            <label class="flex items-center gap-2"><input type="checkbox" checked> Use Chill / calmer profile on highways</label>
-            <label class="flex items-center gap-2"><input type="checkbox"> Accelerator tap to pass instead of waiting</label>
-            <label class="flex items-center gap-2"><input type="checkbox"> Avoid construction zones manually</label>
-          </div>
-        </div>
-
-        <div class="md:col-span-2">
           <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 rounded-2xl font-semibold">Calculate Projected Streak</button>
           <button type="button" id="sim-reset" class="mt-2 text-xs text-zinc-400 hover:text-white w-full">Reset</button>
         </div>
       </form>
 
-      <div id="sim-result" class="hidden mt-6 pt-6 border-t border-white/10 grid grid-cols-2 gap-4 text-center">
-        <div>
-          <div class="text-xs text-zinc-400">PROJECTED SAFE STREAK</div>
-          <div id="sim-streak" class="text-5xl font-semibold metric text-emerald-400">—</div>
-          <div class="text-xs">miles (illustrative)</div>
+      <div id="sim-result" class="hidden mt-6 pt-6 border-t border-white/10 space-y-4">
+        <div class="grid grid-cols-2 gap-4 text-center">
+          <div>
+            <div class="text-xs text-zinc-400">PROJECTED SAFE STREAK</div>
+            <div id="sim-streak" class="text-5xl font-semibold metric text-emerald-400">—</div>
+            <div class="text-xs">miles (illustrative)</div>
+          </div>
+          <div>
+            <div class="text-xs text-zinc-400">SCENARIO RISK (DEMO)</div>
+            <div id="sim-risk" class="text-5xl font-semibold metric">—</div>
+            <div id="sim-tip" class="text-xs text-amber-400 mt-2 px-2"></div>
+          </div>
         </div>
-        <div>
-          <div class="text-xs text-zinc-400">PROJECTED INTERVENTION RISK</div>
-          <div id="sim-risk" class="text-5xl font-semibold metric">—</div>
-          <div id="sim-tip" class="text-xs text-amber-400 mt-2"></div>
-        </div>
+        <div id="sim-scenario-note" class="text-sm text-zinc-300 bg-black/40 border border-white/5 rounded-2xl p-4 leading-relaxed"></div>
+        <p id="sim-assumptions" class="text-[10px] text-zinc-500"></p>
       </div>
     </div>
   </div>
