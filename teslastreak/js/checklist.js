@@ -8,12 +8,12 @@ function escapeHtml(str) {
 }
 
 const tips = [
-  { id: 'safety-first', label: 'Safety > Streak — always intervene if it feels wrong (gamification warning from X users)', checked: false },
+  { id: 'safety-first', label: 'Safety > streak — always intervene if it feels wrong (gamification is not a scoreboard)', checked: false },
   { id: 'parking', label: 'Take over early in parking lots, garages, and Superchargers', checked: true },
-  { id: 'construction', label: 'Manually handle construction zones and complex navigation', checked: false },
-  { id: 'chill', label: 'Use Chill mode on long highway drives for better consistency', checked: false },
-  { id: 'report', label: 'Use the intervention screen to flag critical issues so Tesla can improve', checked: true },
-  { id: 'insurance', label: 'Track your FSD % — high autonomous miles = lower Tesla Insurance premiums', checked: false }
+  { id: 'construction', label: 'Manually handle construction zones, temp lanes, and messy nav edges', checked: false },
+  { id: 'chill', label: 'Use Chill / calmer profiles on long highway drives for consistency', checked: false },
+  { id: 'report', label: 'Use the in-car intervention / feedback UI so Tesla can improve', checked: true },
+  { id: 'insurance', label: 'Track FSD % honestly — clean miles may help insurance scoring over time', checked: false },
 ];
 export function initChecklist() {
   const container = document.getElementById('streak-checklist');
