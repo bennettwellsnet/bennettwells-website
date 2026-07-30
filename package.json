@@ -1,0 +1,9 @@
+{
+  "name": "bennettwells-website",
+  "private": true,
+  "description": "Static site for bennettwells.net",
+  "scripts": {
+    "build": "node scripts/prepare-dist.mjs",
+    "prepare-dist": "node scripts/prepare-dist.mjs"
+  }
+}

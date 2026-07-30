@@ -1,0 +1,28 @@
+# Never upload VCS or local junk as static assets
+.git
+.git/**
+**/.git
+**/.git/**
+
+.DS_Store
+**/.DS_Store
+
+.claude
+.claude/**
+
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Keep source control metadata off the public site
+.gitignore
+
+# Build / tooling (if present)
+node_modules
+**/node_modules
+dist
+.wrangler
+.vercel
+.netlify
+*.log
