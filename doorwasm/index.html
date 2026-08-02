@@ -12,7 +12,7 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DoorWasm â¢ Replacement Door Planner (WASM)</title>
+  <title>DoorWasm • Replacement Door Planner (WASM)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous">
   <style>
@@ -50,7 +50,7 @@
       <h1 class="text-7xl font-semibold tracking-tighter font-display leading-none mb-4">
         Replacement Doors.<br>Calculated in WASM.
       </h1>
-      <p class="text-2xl text-zinc-400 mb-8">Professional-grade door replacement planner. Accurate material takeoffs, cost, and time â with the heavy optimization running in WebAssembly.</p>
+      <p class="text-2xl text-zinc-400 mb-8">Professional-grade door replacement planner. Accurate material takeoffs, cost, and time — with the heavy optimization running in WebAssembly.</p>
     </div>
   </div>
 
@@ -161,7 +161,7 @@
           <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Measure all openings twice (width, height, depth, plumb)</label>
           <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Check for load-bearing walls or header issues</label>
           <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Inspect existing frame for rot or damage</label>
-          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Order pre-hung units 2â3 weeks ahead</label>
+          <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Order pre-hung units 2–3 weeks ahead</label>
           <label class="flex gap-x-2 items-start"><input type="checkbox" class="mt-1"> Have trim, shims, and fasteners on site before removal</label>
         </div>
       </div>
@@ -201,7 +201,7 @@
   </div>
 
   <footer class="max-w-6xl mx-auto px-6 py-8 text-xs text-zinc-500 border-t border-white/10">
-    Fourth demo in the series. Real calculations â¢ Real modules (JS + WASM) â¢ Fully static.
+    Fourth demo in the series. Real calculations • Real modules (JS + WASM) • Fully static.
   </footer>
 
   <script type="module">
@@ -265,10 +265,10 @@
         div.className = 'flex justify-between items-center bg-zinc-950 border border-white/10 rounded-2xl px-4 py-2 text-sm';
         div.innerHTML = `
           <div>
-            <span class="font-medium">${escapeHtml(entry.door.name)}</span> Ã${escapeHtml(String(entry.qty))}
-            <span class="text-zinc-500 ml-2">${escapeHtml(String(entry.openingWidth))}" Ã ${escapeHtml(String(entry.openingHeight))}"</span>
+            <span class="font-medium">${escapeHtml(entry.door.name)}</span> ×${escapeHtml(String(entry.qty))}
+            <span class="text-zinc-500 ml-2">${escapeHtml(String(entry.openingWidth))}" × ${escapeHtml(String(entry.openingHeight))}"</span>
           </div>
-          <button class="text-red-400 hover:text-red-300 px-2 text-lg leading-none" onclick="removeDoor(${escapeHtml(String(entry.id))})">Ã</button>
+          <button class="text-red-400 hover:text-red-300 px-2 text-lg leading-none" onclick="removeDoor(${escapeHtml(String(entry.id))})">×</button>
         `;
         container.appendChild(div);
       });
@@ -296,8 +296,8 @@
           <div class="mx-auto w-28 h-40 border-4 border-amber-400/60 rounded relative mb-2" style="border-width: 6px">
             <div class="absolute inset-0 flex items-center justify-center text-[10px] text-amber-300/70">DOOR</div>
           </div>
-          <div class="text-xs">${escapeHtml(entry.door.name)} Ã${escapeHtml(String(entry.qty))}</div>
-          <div class="text-[10px] text-zinc-500">${escapeHtml(String(entry.openingWidth))}" Ã ${escapeHtml(String(entry.openingHeight))}" opening</div>
+          <div class="text-xs">${escapeHtml(entry.door.name)} ×${escapeHtml(String(entry.qty))}</div>
+          <div class="text-[10px] text-zinc-500">${escapeHtml(String(entry.openingWidth))}" × ${escapeHtml(String(entry.openingHeight))}" opening</div>
         </div>
       `;
     }
