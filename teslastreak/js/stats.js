@@ -1,12 +1,12 @@
 /** Curated FSD streak stats & sample posts (illustrative demo data).
  *  Phase A: company vs community sources, dated labels, honest snapshot framing.
- *  As of 2026-07-30. Not affiliated with Tesla. Always supervise FSD (Supervised).
+ *  As of 2026-08-02. Not affiliated with Tesla. Always supervise FSD (Supervised).
  */
 
 /** Meta for the whole data pack */
 export const snapshotMeta = {
-  asOf: '2026-07-30',
-  asOfLabel: 'July 30, 2026',
+  asOf: '2026-08-02',
+  asOfLabel: 'August 2, 2026',
   kind: 'Static snapshot',
   honesty:
     'This is a curated demo snapshot — not a live X API feed and not an official Tesla product. Company figures come from Tesla’s public FSD Safety Report; streak miles are owner-reported and hard to independently audit.',
@@ -24,11 +24,11 @@ export const companyStats = [
   {
     id: 'fleet',
     label: 'Cumulative FSD miles',
-    value: '12.8B+',
-    detail: 'Miles driven with FSD (Supervised) engaged (Tesla public safety page scale).',
+    value: '13.0B+',
+    detail: 'Miles driven with FSD (Supervised) engaged (Tesla public safety page scale ≈12.98B).',
     source: 'Tesla FSD Safety Report',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Fleet total grows continuously; treat as order-of-magnitude, not a live counter.',
   },
   {
@@ -38,17 +38,17 @@ export const companyStats = [
     detail: 'Company framing for FSD vs ~660k miles U.S. average between major collisions.',
     source: 'Tesla FSD Safety Report',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Tesla-defined collision windows and baselines; external researchers have criticized comparability.',
   },
   {
     id: 'multiplier',
     label: 'Fewer major collisions',
     value: '~7–8×',
-    detail: 'Approximate ratio of Tesla’s published FSD major-collision rate vs U.S. average.',
+    detail: 'Approximate ratio of Tesla’s published FSD major-collision rate vs U.S. average (Tesla also cites ~7× major / ~5× minor).',
     source: 'Tesla FSD Safety Report',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Headline multiplier depends on methodology. Not a guarantee for any single driver or trip.',
   },
   {
@@ -58,7 +58,7 @@ export const companyStats = [
     detail: 'Intervention-free streak counter across drives; milestone celebrations (250 / 500 / 1k / 5k+).',
     source: 'Public software notes / owner reports',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-06–07',
+    asOf: '2026-06–08',
     caveat: 'UI and milestone behavior vary by build and region. Always supervised.',
   },
 ];
@@ -72,7 +72,7 @@ export const communityStats = [
     detail: 'Community-reported zero-intervention streak miles under FSD (Supervised).',
     source: 'Owner / community reporting (e.g. long-run streak posts)',
     sourceUrl: null,
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Not Tesla-certified. “Intervention” definitions differ; not typical for most drivers.',
   },
   {
@@ -82,7 +82,7 @@ export const communityStats = [
     detail: 'Pattern described by long-streak owners: most daily miles on FSD when conditions allow.',
     source: 'Community anecdotes',
     sourceUrl: null,
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Selection bias — people who post long streaks are not a random sample.',
   },
   {
@@ -92,7 +92,7 @@ export const communityStats = [
     detail: 'Owners often take over in lots, garages, Superchargers, construction, and tight nav edges.',
     source: 'Community themes on X',
     sourceUrl: null,
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Qualitative, not a fleet telemetry export.',
   },
   {
@@ -102,7 +102,7 @@ export const communityStats = [
     detail: 'Streak is a metric, not a scoreboard — hesitate to intervene and you are using it wrong.',
     source: 'Repeated owner guidance',
     sourceUrl: null,
-    asOf: '2026-07',
+    asOf: '2026-08',
     caveat: 'Healthy norm — still not a substitute for your own judgment behind the wheel.',
   },
 ];
