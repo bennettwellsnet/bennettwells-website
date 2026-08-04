@@ -2,3 +2,6 @@
 
 /alaskatrip/*  /  302
 /alaskatrip    /  302
+
+# SPA-style apps prefer trailing slash for relative asset paths
+/devices  /devices/  302
