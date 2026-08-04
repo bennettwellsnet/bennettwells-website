@@ -5,3 +5,4 @@
 
 # SPA-style apps prefer trailing slash for relative asset paths
 /devices  /devices/  302
+/acadia-trip  /acadia-trip/  302
