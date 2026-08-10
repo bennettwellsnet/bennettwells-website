@@ -4,6 +4,7 @@
   "description": "Static site for bennettwells.net",
   "scripts": {
     "build": "node scripts/prepare-dist.mjs",
-    "prepare-dist": "node scripts/prepare-dist.mjs"
+    "prepare-dist": "node scripts/prepare-dist.mjs",
+    "deploy": "npm run build && wrangler deploy"
   }
 }
