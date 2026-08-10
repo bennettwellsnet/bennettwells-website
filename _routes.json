@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "include": [
+    "/family-tree",
+    "/family-tree/*"
+  ],
+  "exclude": []
+}
