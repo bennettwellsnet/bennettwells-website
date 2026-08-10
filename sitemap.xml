@@ -86,6 +86,13 @@
   </url>
 
   <url>
+    <loc>https://bennettwells.net/family-tree</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://bennettwells.net/patch-stack</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
