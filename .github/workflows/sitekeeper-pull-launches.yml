@@ -1,0 +1,29 @@
+name: Sitekeeper pull launches.json
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: site/2026-10-13-starlink-15-25
+
+      - name: Download launches.json from spacexdemo
+        run: |
+          curl -fsSL -o spacexdemo/launches.json \
+            "https://raw.githubusercontent.com/bennettwellsnet/spacexdemo/site/2026-10-13-starlink-15-25/launches.json"
+          python3 -c "import json;d=json.load(open('spacexdemo/launches.json'));assert d['counts']['flown']==119;print(d['fetched_at'],d['counts'])"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add spacexdemo/launches.json
+          git diff --staged --quiet && echo "No changes" || \
+            (git commit -m "data: refresh launches.json via LL2 (119/F9 113/FH 3/Starship 3; Starlink 15-25 + CRS-35)" && git push)
