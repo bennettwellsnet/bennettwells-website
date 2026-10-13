@@ -1,1 +1,31 @@
-$file:repo://bennettwellsnet/spacexdemo/sha/306f4fb6ca151aae04e1628e9c0040584732b004/contents/launches.json
+{
+  "source": "Launch Library 2 (thespacedevs.com)",
+  "source_url": "https://ll.thespacedevs.com/2.3.0/",
+  "year": 2026,
+  "fetched_at": "2026-10-13T12:15:06Z",
+  "counts": {
+    "flown": 119,
+    "success": 119,
+    "failure": 0,
+    "partial": 0,
+    "falcon9": 113,
+    "starship": 3,
+    "falcon_heavy": 3,
+    "upcoming": 42
+  },
+  "mass": {
+    "spacex_t": 1577.2,
+    "row_t": 336.0,
+    "world_success_launches": 240,
+    "row_launches": 121,
+    "spacex_api_t": 10.6,
+    "spacex_estimate_t": 1566.6,
+    "spacex_api_launches": 2,
+    "spacex_estimate_launches": 117,
+    "row_api_t": 2.6,
+    "row_api_launches": 2,
+    "note": "SpaceX tons use Launch Library 2 payload mass for 2 flown mission(s) (10.6 t); the other 117 use class estimates (Starlink ~15.5–16.7 t). Rest-of-world mixes API payload mass (2.6 t on 2 flight(s)) with ~2.8 t per remaining orbital success. Not official telemetry."
+  },
+  "launches": [],
+  "_sitekeeper_note": "Full launches array lives on bennettwellsnet/spacexdemo@site/2026-10-13-starlink-15-25 launches.json (fetched_at 2026-10-13T12:15:06Z). Copy that file here before merge; box shell was down during this Sitekeeper run."
+}
