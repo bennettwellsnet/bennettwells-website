@@ -10,7 +10,3 @@
   X-Robots-Tag: noindex, nofollow
   Cache-Control: private, max-age=300
 
-/acadia-trip
-  X-Robots-Tag: noindex, nofollow
-/acadia-trip/*
-  X-Robots-Tag: noindex, nofollow
