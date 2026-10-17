@@ -372,6 +372,37 @@ body {
   line-height: 1.85;
 }
 
+.career-strip {
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.about-text .career-strip p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.career-current strong {
+  display: block;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.career-prior {
+  margin-top: 12px;
+}
+
+.career-prior-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
 .about-highlights {
   display: flex;
   flex-direction: column;
@@ -721,7 +752,7 @@ footer {
 
   .hero { padding: 100px 24px 60px; min-height: 100svh; }
 
-  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+  .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
   .stat-divider { display: none; }
   .stat-num { font-size: 1.5rem; }
 
