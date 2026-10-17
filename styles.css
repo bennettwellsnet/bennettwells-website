@@ -234,6 +234,7 @@ body {
 .hero-stats {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 32px;
   padding-top: 40px;
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -720,7 +721,8 @@ footer {
 
   .hero { padding: 100px 24px 60px; min-height: 100svh; }
 
-  .hero-stats { gap: 20px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+  .stat-divider { display: none; }
   .stat-num { font-size: 1.5rem; }
 
   .hero-scroll { display: none; }
