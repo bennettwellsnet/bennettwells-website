@@ -1,7 +1,5 @@
 /**
  * Global Pages middleware: block sensitive paths only.
- * Family tree auth lives in functions/family-tree/[[path]].js
- * so it always runs in front of static assets for that route.
  */
 
 const BLOCKED_EXACT = new Set([
