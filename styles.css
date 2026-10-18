@@ -769,3 +769,7 @@ footer {
   footer { padding: 24px; }
   .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
 }
+
+.footer-tagline { font-style: italic; }
+.footer-links a { color: inherit; text-decoration: none; }
+.footer-links a:hover { color: var(--gold); }
