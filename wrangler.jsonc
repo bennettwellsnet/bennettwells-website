@@ -1,0 +1,18 @@
+// Static-assets-only Worker for bennettwells.net.
+// Workers Builds runs `npx wrangler deploy` from the repo root; without this
+// file Wrangler sees the functions/ directory, assumes a Pages project, and
+// refuses to deploy.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bennettwells-website",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "bennettwells.net", "custom_domain": true }
+  ],
+  "workers_dev": true,
+  "preview_urls": true
+}
