@@ -1,12 +1,12 @@
 /** Curated FSD streak stats & sample posts (illustrative demo data).
  *  Phase A: company vs community sources, dated labels, honest snapshot framing.
- *  As of 2026-08-02. Not affiliated with Tesla. Always supervise FSD (Supervised).
+ *  As of 2026-11-19 (company figures from Tesla's Oct 27, 2026 FSD Safety Report). Not affiliated with Tesla. Always supervise FSD (Supervised).
  */
 
 /** Meta for the whole data pack */
 export const snapshotMeta = {
-  asOf: '2026-08-02',
-  asOfLabel: 'August 2, 2026',
+  asOf: '2026-11-19',
+  asOfLabel: 'November 19, 2026',
   kind: 'Static snapshot',
   honesty:
     'This is a curated demo snapshot — not a live X API feed and not an official Tesla product. Company figures come from Tesla’s public FSD Safety Report; streak miles are owner-reported and hard to independently audit.',
@@ -23,32 +23,32 @@ export const snapshotMeta = {
 export const companyStats = [
   {
     id: 'fleet',
-    label: 'Cumulative FSD miles',
-    value: '13.0B+',
-    detail: 'Miles driven with FSD (Supervised) engaged (Tesla public safety page scale ≈12.98B).',
+    label: 'FSD miles in report window',
+    value: '~9.5B',
+    detail: 'North America miles with FSD (Supervised) engaged in Tesla’s rolling 12-month report window (≈9.48B, 1,579 major collisions).',
     source: 'Tesla FSD Safety Report',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-08',
+    asOf: '2026-10',
     caveat: 'Fleet total grows continuously; treat as order-of-magnitude, not a live counter.',
   },
   {
     id: 'major',
     label: 'Miles / major collision',
-    value: '~5.3M',
-    detail: 'Company framing for FSD vs ~660k miles U.S. average between major collisions.',
+    value: '~6.0M',
+    detail: 'Company framing for FSD (≈6.0M miles per major, ≈1.8M per minor collision) vs ~660k miles U.S. average between major collisions.',
     source: 'Tesla FSD Safety Report',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-08',
+    asOf: '2026-10',
     caveat: 'Tesla-defined collision windows and baselines; external researchers have criticized comparability.',
   },
   {
     id: 'multiplier',
     label: 'Fewer major collisions',
-    value: '~7–8×',
-    detail: 'Approximate ratio of Tesla’s published FSD major-collision rate vs U.S. average (Tesla also cites ~7× major / ~5× minor).',
+    value: '~9×',
+    detail: 'Approximate ratio of Tesla’s published FSD major-collision rate vs U.S. average (up from ~7× in the summer report).',
     source: 'Tesla FSD Safety Report',
     sourceUrl: 'https://www.tesla.com/fsd/safety',
-    asOf: '2026-08',
+    asOf: '2026-10',
     caveat: 'Headline multiplier depends on methodology. Not a guarantee for any single driver or trip.',
   },
   {
